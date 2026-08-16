@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://reconx-sigma.vercel.app/sitemap.xml
