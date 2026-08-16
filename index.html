@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReconX - Bank Statement to Excel Engine</title>
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <img src="assets/icon.png" alt="ReconX Logo" width="32" height="32" style="border-radius: 8px;">
+      ReconX
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <i class="ph ph-moon"></i>
+      </button>
+      <a href="#pricing" class="btn btn-outline">Pricing</a>
+      <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX.zip" class="btn btn-primary" download>Download for Windows</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-badges">
+      <div class="hero__badge">
+        <span class="dot"></span>
+        100% Offline · Local Processing
+      </div>
+      <div class="hero__badge badge-outline">
+        Windows Native
+      </div>
+    </div>
+    <h1 class="hero__title">
+      Bank Statement <span class="gradient-text">→ Excel</span>
+    </h1>
+    <p class="hero__subtitle">
+      Convert bank statement PDFs into clean, reconciled Excel files.<br>
+      Nothing ever leaves your machine. Bank-grade privacy out of the box.
+    </p>
+    <div class="hero-cta">
+      <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX.zip" class="btn btn-primary btn-large" download>
+        <i class="ph ph-download-simple"></i> Download ReconX v1.7.2
+      </a>
+      <p class="cta-sub">Free 5 conversions included. No credit card required.</p>
+    </div>
+  </header>
+
+  <!-- Features Grid -->
+  <section class="section features" id="features">
+    <h2 class="section-title">Why choose ReconX?</h2>
+    <div class="marquee-container">
+      <div class="marquee-track">
+        
+        <!-- Group 1 -->
+        <div class="marquee-group">
+          <!-- Feature 1 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-wifi-slash"></i></div>
+            <h3 class="feature-title">100% Offline</h3>
+            <p class="feature-desc">Your financial data never leaves your computer. Everything runs completely locally.</p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-target"></i></div>
+            <h3 class="feature-title">Full Accurate Conversion</h3>
+            <p class="feature-desc">Perfectly formatted Excel files with zero data loss. Balances are validated against transactions automatically.</p>
+          </div>
+          <!-- Feature 3 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-shield-check"></i></div>
+            <h3 class="feature-title">Secured In System</h3>
+            <p class="feature-desc">Highest level of privacy with bank-grade security protocols natively within the Windows environment.</p>
+          </div>
+          <!-- Feature 4 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-copy"></i></div>
+            <h3 class="feature-title">Multiple PDF Conversion</h3>
+            <p class="feature-desc">Batch convert multiple statements at one time and easily merge them into a single consolidated Excel sheet.</p>
+          </div>
+          <!-- Feature 5 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-lock-key"></i></div>
+            <h3 class="feature-title">Encrypted PDFs Supported</h3>
+            <p class="feature-desc">Easily unlock and convert password-protected bank statements directly within the software.</p>
+          </div>
+          <!-- Feature 6 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-robot"></i></div>
+            <h3 class="feature-title">Auto-Detect AI Feature</h3>
+            <p class="feature-desc">No need to manually select your bank. Our AI automatically identifies the exact format for you.</p>
+          </div>
+          <!-- Feature 7 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-infinity"></i></div>
+            <h3 class="feature-title">Unlimited in Pro Version</h3>
+            <p class="feature-desc">Get unrestricted access to convert as many PDFs as you want with any of our minimal pricing plans.</p>
+          </div>
+          <!-- Feature 8 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-user-circle"></i></div>
+            <h3 class="feature-title">Profile Hub Integration</h3>
+            <p class="feature-desc">Keep track of your lifetime usage. All your conversion records and history are securely saved in your Profile Hub.</p>
+          </div>
+        </div>
+
+        <!-- Group 2 (Duplicate for infinite scroll loop) -->
+        <div class="marquee-group" aria-hidden="true">
+          <!-- Feature 1 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-wifi-slash"></i></div>
+            <h3 class="feature-title">100% Offline</h3>
+            <p class="feature-desc">Your financial data never leaves your computer. Everything runs completely locally.</p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-target"></i></div>
+            <h3 class="feature-title">Full Accurate Conversion</h3>
+            <p class="feature-desc">Perfectly formatted Excel files with zero data loss. Balances are validated against transactions automatically.</p>
+          </div>
+          <!-- Feature 3 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-shield-check"></i></div>
+            <h3 class="feature-title">Secured In System</h3>
+            <p class="feature-desc">Highest level of privacy with bank-grade security protocols natively within the Windows environment.</p>
+          </div>
+          <!-- Feature 4 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-copy"></i></div>
+            <h3 class="feature-title">Multiple PDF Conversion</h3>
+            <p class="feature-desc">Batch convert multiple statements at one time and easily merge them into a single consolidated Excel sheet.</p>
+          </div>
+          <!-- Feature 5 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-lock-key"></i></div>
+            <h3 class="feature-title">Encrypted PDFs Supported</h3>
+            <p class="feature-desc">Easily unlock and convert password-protected bank statements directly within the software.</p>
+          </div>
+          <!-- Feature 6 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-robot"></i></div>
+            <h3 class="feature-title">Auto-Detect AI Feature</h3>
+            <p class="feature-desc">No need to manually select your bank. Our AI automatically identifies the exact format for you.</p>
+          </div>
+          <!-- Feature 7 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-infinity"></i></div>
+            <h3 class="feature-title">Unlimited in Pro Version</h3>
+            <p class="feature-desc">Get unrestricted access to convert as many PDFs as you want with any of our minimal pricing plans.</p>
+          </div>
+          <!-- Feature 8 -->
+          <div class="card feature-card">
+            <div class="feature-icon"><i class="ph ph-user-circle"></i></div>
+            <h3 class="feature-title">Profile Hub Integration</h3>
+            <p class="feature-desc">Keep track of your lifetime usage. All your conversion records and history are securely saved in your Profile Hub.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section how-it-works">
+    <h2 class="section-title">How it works</h2>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Upload PDFs</h3>
+        <p>Drop single or multiple bank statement PDFs directly into the engine. Enter passwords if encrypted.</p>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Auto-Detect & AI Magic</h3>
+        <p>ReconX automatically detects the bank format using our built-in AI parser. No manual selection required.</p>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Get Clean Excel</h3>
+        <p>Export instantly to XLSX. Balances are fully reconciled and ready for accounting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section pricing" id="pricing">
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p class="section-subtitle">Pay once for the duration you need. Activate instantly via UPI.</p>
+
+    <div class="grid pricing-grid">
+      <!-- 1 Month -->
+      <div class="card pricing-card">
+        <h3 class="plan-name">1 Month</h3>
+        <div class="plan-price">₹349</div>
+        <ul class="plan-features">
+          <li><i class="ph ph-check"></i> Unlimited Conversions</li>
+          <li><i class="ph ph-check"></i> All Bank Parsers</li>
+          <li><i class="ph ph-check"></i> Local Offline Engine</li>
+        </ul>
+        <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX.zip" class="btn btn-outline plan-btn" download>Download to Buy</a>
+      </div>
+
+      <!-- 2 Months -->
+      <div class="card pricing-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <h3 class="plan-name">2 Months</h3>
+        <div class="plan-price">₹599</div>
+        <ul class="plan-features">
+          <li><i class="ph ph-check"></i> Unlimited Conversions</li>
+          <li><i class="ph ph-check"></i> All Bank Parsers</li>
+          <li><i class="ph ph-check"></i> Local Offline Engine</li>
+          <li><i class="ph ph-check"></i> Save ₹99</li>
+        </ul>
+        <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX.zip" class="btn btn-primary plan-btn" download>Download to Buy</a>
+      </div>
+
+      <!-- 3 Months -->
+      <div class="card pricing-card">
+        <h3 class="plan-name">3 Months</h3>
+        <div class="plan-price">₹849</div>
+        <ul class="plan-features">
+          <li><i class="ph ph-check"></i> Unlimited Conversions</li>
+          <li><i class="ph ph-check"></i> All Bank Parsers</li>
+          <li><i class="ph ph-check"></i> Local Offline Engine</li>
+          <li><i class="ph ph-check"></i> Save ₹198</li>
+        </ul>
+        <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX.zip" class="btn btn-outline plan-btn" download>Download to Buy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/icon.png" alt="ReconX" width="24" height="24">
+        <span>ReconX</span>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 ReconX Engine. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
