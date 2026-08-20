@@ -681,3 +681,65 @@ ul {
   to { transform: scale(1); opacity: 1; }
 }
 
+/* Interactive Step Viewer Styles */
+.step-pill {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.step-pill .pill-num {
+  background: var(--bg-glass-hover);
+  color: var(--text-primary);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.step-pill:hover {
+  border-color: var(--border-accent);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.step-pill.active {
+  background: var(--text-accent);
+  border-color: var(--text-accent);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(221, 2, 0, 0.4);
+}
+
+.step-pill.active .pill-num {
+  background: #ffffff;
+  color: var(--text-accent);
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-subtle);
+  transition: all 0.25s ease;
+}
+
+.step-dot.active {
+  width: 26px;
+  border-radius: 10px;
+  background: var(--text-accent);
+}
+
+

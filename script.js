@@ -226,3 +226,120 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// === INTERACTIVE INSTALLATION GUIDE CONTROLLER ===
+const guideSteps = [
+    {
+        num: 1,
+        title: "Download & Double-Click ReconX_Setup.exe",
+        desc: "Click the download button to get <code>ReconX_Setup.exe</code>, then open your Downloads folder and double-click the setup file.",
+        img: "assets/guide/step1_download.png"
+    },
+    {
+        num: 2,
+        title: "If Windows SmartScreen appears: Click 'More info'",
+        desc: "Because ReconX is a new software release, Windows may show a blue <em>'Windows protected your PC'</em> prompt. Click the underlined <strong>'More info'</strong> link.",
+        img: "assets/guide/step2_smartscreen_info.png"
+    },
+    {
+        num: 3,
+        title: "Click the 'Run anyway' button",
+        desc: "Click the white <strong>'Run anyway'</strong> button at the bottom. ReconX is 100% clean, verified, and runs entirely offline on your computer.",
+        img: "assets/guide/step3_smartscreen_run.png"
+    },
+    {
+        num: 4,
+        title: "The Setup Wizard Opens: Click 'Next'",
+        desc: "The installer wizard opens cleanly without requiring administrator privileges. Click <strong>'Next'</strong> to proceed.",
+        img: "assets/guide/step4_wizard_next.png"
+    },
+    {
+        num: 5,
+        title: "Create Desktop Shortcut & Click 'Next'",
+        desc: "Keep <em>'Create a desktop shortcut'</em> checked and click <strong>'Next' → 'Install'</strong>. ReconX installs cleanly in 3 seconds.",
+        img: "assets/guide/step5_wizard_shortcut.png"
+    },
+    {
+        num: 6,
+        title: "Click 'Finish' — ReconX Launches Instantly!",
+        desc: "Click <strong>'Finish'</strong>. ReconX will launch automatically and place a desktop shortcut icon on your PC ready to use anytime!",
+        img: "assets/guide/step6_wizard_finish.png"
+    }
+];
+
+let currentStepIndex = 0;
+
+function goToStep(index) {
+    if (index < 0 || index >= guideSteps.length) return;
+    currentStepIndex = index;
+    const step = guideSteps[index];
+
+    const badge = document.getElementById('guideStepBadge');
+    const title = document.getElementById('guideStepTitle');
+    const desc = document.getElementById('guideStepDesc');
+    const img = document.getElementById('guideStepImg');
+    const prevBtn = document.getElementById('prevStepBtn');
+    const nextBtn = document.getElementById('nextStepBtn');
+
+    if (badge) badge.innerText = `Step ${step.num} of 6`;
+    if (title) title.innerText = step.title;
+    if (desc) desc.innerHTML = step.desc;
+    
+    if (img) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = step.img;
+            img.style.opacity = '1';
+        }, 150);
+    }
+
+    // Update Pills
+    document.querySelectorAll('.step-pill').forEach((pill, idx) => {
+        if (idx === index) pill.classList.add('active');
+        else pill.classList.remove('active');
+    });
+
+    // Update Dots
+    document.querySelectorAll('.step-dot').forEach((dot, idx) => {
+        if (idx === index) dot.classList.add('active');
+        else dot.classList.remove('active');
+    });
+
+    // Update Prev / Next Buttons
+    if (prevBtn) {
+        if (index === 0) {
+            prevBtn.disabled = true;
+            prevBtn.style.opacity = '0.4';
+            prevBtn.style.cursor = 'not-allowed';
+        } else {
+            prevBtn.disabled = false;
+            prevBtn.style.opacity = '1';
+            prevBtn.style.cursor = 'pointer';
+        }
+    }
+
+    if (nextBtn) {
+        if (index === guideSteps.length - 1) {
+            nextBtn.innerHTML = `<span>Download Now</span> <i class="ph ph-download-simple"></i>`;
+            nextBtn.onclick = () => {
+                window.location.href = "https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe";
+            };
+        } else {
+            nextBtn.innerHTML = `<span>Next Step</span> <i class="ph ph-arrow-right"></i>`;
+            nextBtn.onclick = nextStep;
+        }
+    }
+}
+
+function nextStep() {
+    if (currentStepIndex < guideSteps.length - 1) {
+        goToStep(currentStepIndex + 1);
+    }
+}
+
+function prevStep() {
+    if (currentStepIndex > 0) {
+        goToStep(currentStepIndex - 1);
+    }
+}
+

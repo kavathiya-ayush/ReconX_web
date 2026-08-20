@@ -250,104 +250,63 @@
     </div>
   </section>
 
-  <!-- Installation Guide Section -->
-  <section class="section installation-guide" id="installation-guide" style="padding: 4rem 2rem; max-width: 1100px; margin: 0 auto;">
-    <div style="text-align: center; margin-bottom: 3rem;">
+  <!-- Interactive Step-by-Step Installation Viewer -->
+  <section class="section installation-guide" id="installation-guide" style="padding: 4rem 2rem; max-width: 960px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 2.5rem;">
       <div class="hero__badge badge-outline" style="margin-bottom: 1rem; display: inline-flex; align-items: center;">
-        <i class="ph ph-shield-check" style="color: var(--text-success); font-size: 1.2rem; margin-right: 6px;"></i> 100% Safe & Offline
+        <i class="ph ph-shield-check" style="color: var(--text-success); font-size: 1.2rem; margin-right: 6px;"></i> 100% Safe & Offline Setup
       </div>
-      <h2 class="section-title">How to Install & Run ReconX in 30 Seconds</h2>
-      <p class="section-subtitle" style="max-width: 650px; margin: 0 auto;">
-        Follow this quick step-by-step visual guide to install ReconX on Windows and launch the software.
+      <h2 class="section-title">Interactive Installation Guide</h2>
+      <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">
+        Follow each step below at your own pace to install and launch ReconX in 30 seconds.
       </p>
     </div>
 
-    <!-- SmartScreen Tip Alert Box -->
-    <div style="background: rgba(221, 2, 0, 0.08); border: 1px solid rgba(221, 2, 0, 0.3); border-radius: 12px; padding: 20px 24px; margin-bottom: 3rem; display: flex; gap: 16px; align-items: flex-start;">
-      <div style="background: var(--text-accent); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.2rem;">
-        <i class="ph ph-info"></i>
-      </div>
-      <div>
-        <h4 style="color: var(--text-primary); margin-bottom: 4px; font-size: 1.05rem;">Notice for Windows SmartScreen Users:</h4>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
-          Because ReconX is a new software release, Windows may show a blue <em>"Windows protected your PC"</em> prompt. This is completely normal for new applications. Simply click <strong>"More info"</strong> and then <strong>"Run anyway"</strong> to complete setup.
-        </p>
-      </div>
+    <!-- Step Selector Pills -->
+    <div class="step-nav-bar" style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+      <button class="step-pill active" onclick="goToStep(0)"><span class="pill-num">1</span> Download</button>
+      <button class="step-pill" onclick="goToStep(1)"><span class="pill-num">2</span> More Info</button>
+      <button class="step-pill" onclick="goToStep(2)"><span class="pill-num">3</span> Run Anyway</button>
+      <button class="step-pill" onclick="goToStep(3)"><span class="pill-num">4</span> Setup Wizard</button>
+      <button class="step-pill" onclick="goToStep(4)"><span class="pill-num">5</span> Desktop Icon</button>
+      <button class="step-pill" onclick="goToStep(5)"><span class="pill-num">6</span> Launch</button>
     </div>
 
-    <!-- Step by Step Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+    <!-- Main Step Showcase Card -->
+    <div class="guide-showcase-card" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg); backdrop-filter: blur(20px);">
       
-      <!-- Step 1 -->
-      <div class="card" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-md);">
-        <div style="padding: 20px 24px 12px 24px;">
-          <span style="background: var(--text-accent); color: white; font-weight: bold; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">Step 1</span>
-          <h3 style="margin-top: 10px; font-size: 1.2rem; color: var(--text-primary);">Download & Open Setup</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">Download <code>ReconX_Setup.exe</code> and double-click the file in your Downloads folder.</p>
-        </div>
-        <div style="padding: 0 16px 16px 16px; margin-top: auto;">
-          <img src="assets/guide/step1_download.png" alt="Step 1: Download Setup" style="width: 100%; border-radius: 10px; border: 1px solid var(--border-subtle); display: block;">
+      <!-- Step Header Info -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <span id="guideStepBadge" style="background: var(--text-accent); color: white; font-weight: 700; font-size: 0.8rem; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">Step 1 of 6</span>
+          <h3 id="guideStepTitle" style="font-size: 1.5rem; color: var(--text-primary); margin-top: 8px;">Download & Double-Click ReconX_Setup.exe</h3>
+          <p id="guideStepDesc" style="color: var(--text-secondary); font-size: 1rem; margin-top: 4px; line-height: 1.6;">Download the setup installer and double-click <code>ReconX_Setup.exe</code> in your Downloads folder.</p>
         </div>
       </div>
 
-      <!-- Step 2 -->
-      <div class="card" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-md);">
-        <div style="padding: 20px 24px 12px 24px;">
-          <span style="background: var(--text-accent); color: white; font-weight: bold; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">Step 2</span>
-          <h3 style="margin-top: 10px; font-size: 1.2rem; color: var(--text-primary);">Click "More info"</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">If the blue Windows Defender SmartScreen appears, click the underlined <strong>"More info"</strong> link.</p>
-        </div>
-        <div style="padding: 0 16px 16px 16px; margin-top: auto;">
-          <img src="assets/guide/step2_smartscreen_info.png" alt="Step 2: Click More info" style="width: 100%; border-radius: 10px; border: 1px solid var(--border-subtle); display: block;">
-        </div>
+      <!-- High-Definition Step Screenshot Box -->
+      <div style="position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); background: #0b0202; margin-bottom: 24px; min-height: 380px; display: flex; align-items: center; justify-content: center;">
+        <img id="guideStepImg" src="assets/guide/step1_download.png" alt="Installation Step Visual Guide" style="width: 100%; max-height: 520px; object-fit: contain; display: block; transition: opacity 0.25s ease;">
       </div>
 
-      <!-- Step 3 -->
-      <div class="card" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-md);">
-        <div style="padding: 20px 24px 12px 24px;">
-          <span style="background: var(--text-accent); color: white; font-weight: bold; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">Step 3</span>
-          <h3 style="margin-top: 10px; font-size: 1.2rem; color: var(--text-primary);">Click "Run anyway"</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">Click the <strong>"Run anyway"</strong> button to launch the trusted ReconX Setup Wizard.</p>
-        </div>
-        <div style="padding: 0 16px 16px 16px; margin-top: auto;">
-          <img src="assets/guide/step3_smartscreen_run.png" alt="Step 3: Click Run anyway" style="width: 100%; border-radius: 10px; border: 1px solid var(--border-subtle); display: block;">
-        </div>
-      </div>
+      <!-- Navigation Action Controls -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 20px; flex-wrap: wrap; gap: 12px;">
+        <button id="prevStepBtn" class="btn btn-outline" onclick="prevStep()" disabled style="opacity: 0.5; cursor: not-allowed;">
+          <i class="ph ph-arrow-left"></i> Previous Step
+        </button>
 
-      <!-- Step 4 -->
-      <div class="card" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-md);">
-        <div style="padding: 20px 24px 12px 24px;">
-          <span style="background: var(--text-accent); color: white; font-weight: bold; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">Step 4</span>
-          <h3 style="margin-top: 10px; font-size: 1.2rem; color: var(--text-primary);">Click "Next" in Wizard</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">The installer opens cleanly without requiring admin privileges. Click <strong>"Next"</strong> to proceed.</p>
+        <div style="display: flex; gap: 6px;" id="stepDots">
+          <span class="step-dot active"></span>
+          <span class="step-dot"></span>
+          <span class="step-dot"></span>
+          <span class="step-dot"></span>
+          <span class="step-dot"></span>
+          <span class="step-dot"></span>
         </div>
-        <div style="padding: 0 16px 16px 16px; margin-top: auto;">
-          <img src="assets/guide/step4_wizard_next.png" alt="Step 4: Click Next" style="width: 100%; border-radius: 10px; border: 1px solid var(--border-subtle); display: block;">
-        </div>
-      </div>
 
-      <!-- Step 5 -->
-      <div class="card" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-md);">
-        <div style="padding: 20px 24px 12px 24px;">
-          <span style="background: var(--text-accent); color: white; font-weight: bold; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">Step 5</span>
-          <h3 style="margin-top: 10px; font-size: 1.2rem; color: var(--text-primary);">Create Desktop Shortcut</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">Keep <em>"Create a desktop shortcut"</em> checked and click <strong>"Next" → "Install"</strong>.</p>
-        </div>
-        <div style="padding: 0 16px 16px 16px; margin-top: auto;">
-          <img src="assets/guide/step5_wizard_shortcut.png" alt="Step 5: Create shortcut" style="width: 100%; border-radius: 10px; border: 1px solid var(--border-subtle); display: block;">
-        </div>
-      </div>
-
-      <!-- Step 6 -->
-      <div class="card" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-md);">
-        <div style="padding: 20px 24px 12px 24px;">
-          <span style="background: var(--text-accent); color: white; font-weight: bold; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">Step 6</span>
-          <h3 style="margin-top: 10px; font-size: 1.2rem; color: var(--text-primary);">Click "Finish" & Launch!</h3>
-          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 6px;">Click <strong>"Finish"</strong>. ReconX will automatically launch and place a desktop icon on your PC.</p>
-        </div>
-        <div style="padding: 0 16px 16px 16px; margin-top: auto;">
-          <img src="assets/guide/step6_wizard_finish.png" alt="Step 6: Finish installation" style="width: 100%; border-radius: 10px; border: 1px solid var(--border-subtle); display: block;">
-        </div>
+        <button id="nextStepBtn" class="btn btn-primary" onclick="nextStep()" style="display: inline-flex; align-items: center; gap: 8px;">
+          <span>Next Step</span> <i class="ph ph-arrow-right"></i>
+        </button>
       </div>
 
     </div>
