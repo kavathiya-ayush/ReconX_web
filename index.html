@@ -69,7 +69,7 @@
         <i class="ph ph-moon"></i>
       </button>
       <a href="#how-it-works" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;">How It Works</a>
-      <a href="#installation-guide" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;"><i class="ph ph-gear"></i> Setup Guide</a>
+      <a href="javascript:void(0)" onclick="openGuideModal(0)" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;"><i class="ph ph-question"></i> Setup Guide</a>
       <a href="#pricing" class="btn btn-outline">Pricing</a>
       <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe" class="btn btn-primary download-trigger" download>Download for Windows</a>
     </div>
@@ -227,7 +227,7 @@
   </section>
 
   <!-- How It Works -->
-  <section class="section how-it-works">
+  <section class="section how-it-works" id="how-it-works">
     <h2 class="section-title">How it works</h2>
     <div class="steps-container">
       <div class="step">
@@ -247,68 +247,6 @@
         <h3>Get Clean Excel</h3>
         <p>Export instantly to XLSX. Balances are fully reconciled and ready for accounting.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Interactive Step-by-Step Installation Viewer -->
-  <section class="section installation-guide" id="installation-guide" style="padding: 4rem 2rem; max-width: 960px; margin: 0 auto;">
-    <div style="text-align: center; margin-bottom: 2.5rem;">
-      <div class="hero__badge badge-outline" style="margin-bottom: 1rem; display: inline-flex; align-items: center;">
-        <i class="ph ph-shield-check" style="color: var(--text-success); font-size: 1.2rem; margin-right: 6px;"></i> 100% Safe & Offline Setup
-      </div>
-      <h2 class="section-title">Interactive Installation Guide</h2>
-      <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">
-        Follow each step below at your own pace to install and launch ReconX in 30 seconds.
-      </p>
-    </div>
-
-    <!-- Step Selector Pills -->
-    <div class="step-nav-bar" style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-      <button class="step-pill active" onclick="goToStep(0)"><span class="pill-num">1</span> Download</button>
-      <button class="step-pill" onclick="goToStep(1)"><span class="pill-num">2</span> More Info</button>
-      <button class="step-pill" onclick="goToStep(2)"><span class="pill-num">3</span> Run Anyway</button>
-      <button class="step-pill" onclick="goToStep(3)"><span class="pill-num">4</span> Setup Wizard</button>
-      <button class="step-pill" onclick="goToStep(4)"><span class="pill-num">5</span> Desktop Icon</button>
-      <button class="step-pill" onclick="goToStep(5)"><span class="pill-num">6</span> Launch</button>
-    </div>
-
-    <!-- Main Step Showcase Card -->
-    <div class="guide-showcase-card" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg); backdrop-filter: blur(20px);">
-      
-      <!-- Step Header Info -->
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
-        <div>
-          <span id="guideStepBadge" style="background: var(--text-accent); color: white; font-weight: 700; font-size: 0.8rem; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">Step 1 of 6</span>
-          <h3 id="guideStepTitle" style="font-size: 1.5rem; color: var(--text-primary); margin-top: 8px;">Download & Double-Click ReconX_Setup.exe</h3>
-          <p id="guideStepDesc" style="color: var(--text-secondary); font-size: 1rem; margin-top: 4px; line-height: 1.6;">Download the setup installer and double-click <code>ReconX_Setup.exe</code> in your Downloads folder.</p>
-        </div>
-      </div>
-
-      <!-- High-Definition Step Screenshot Box -->
-      <div style="position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); background: #0b0202; margin-bottom: 24px; min-height: 380px; display: flex; align-items: center; justify-content: center;">
-        <img id="guideStepImg" src="assets/guide/step1_download.png" alt="Installation Step Visual Guide" style="width: 100%; max-height: 520px; object-fit: contain; display: block; transition: opacity 0.25s ease;">
-      </div>
-
-      <!-- Navigation Action Controls -->
-      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 20px; flex-wrap: wrap; gap: 12px;">
-        <button id="prevStepBtn" class="btn btn-outline" onclick="prevStep()" disabled style="opacity: 0.5; cursor: not-allowed;">
-          <i class="ph ph-arrow-left"></i> Previous Step
-        </button>
-
-        <div style="display: flex; gap: 6px;" id="stepDots">
-          <span class="step-dot active"></span>
-          <span class="step-dot"></span>
-          <span class="step-dot"></span>
-          <span class="step-dot"></span>
-          <span class="step-dot"></span>
-          <span class="step-dot"></span>
-        </div>
-
-        <button id="nextStepBtn" class="btn btn-primary" onclick="nextStep()" style="display: inline-flex; align-items: center; gap: 8px;">
-          <span>Next Step</span> <i class="ph ph-arrow-right"></i>
-        </button>
-      </div>
-
     </div>
   </section>
 
@@ -363,6 +301,7 @@
   <footer class="footer">
     <div class="footer-content" style="flex-direction: column; gap: 20px; text-align: center; padding: 40px 20px;">
       <div style="display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; font-size: 0.95rem;">
+        <a href="javascript:void(0)" onclick="openGuideModal(0)" style="color: var(--text-accent); text-decoration: none; font-weight: 500;">📖 Installation Guide</a>
         <a href="terms.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--text-accent)'" onmouseout="this.style.color='var(--text-secondary)'">Terms & Conditions</a>
         <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--text-accent)'" onmouseout="this.style.color='var(--text-secondary)'">Privacy Policy</a>
         <a href="refund.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--text-accent)'" onmouseout="this.style.color='var(--text-secondary)'">Refund & Cancellation</a>
@@ -374,32 +313,60 @@
     </div>
   </footer>
 
-  <!-- Download Started & Installation Guide Modal -->
-  <div id="downloadModal" class="download-modal-overlay" style="display: none;">
-    <div class="download-modal-card">
-      <button class="download-modal-close" id="closeDownloadModal" aria-label="Close Modal">&times;</button>
-      <div style="font-size: 2.5rem; margin-bottom: 8px;">🎉</div>
-      <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 8px;">Your Download Has Started!</h3>
-      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
-        <code>ReconX_Setup.exe</code> is downloading. Once downloaded, complete the 30-second setup.
-      </p>
+  <!-- Interactive Setup Guide Popup Modal -->
+  <div id="guideModal" class="download-modal-overlay" style="display: none;">
+    <div class="guide-modal-card">
+      <button class="download-modal-close" onclick="closeGuideModal()" aria-label="Close Modal">&times;</button>
       
-      <div style="background: var(--bg-glass); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 16px; text-align: left; margin-bottom: 24px;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-          <span style="background: var(--text-accent); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold;">!</span>
-          <strong style="color: var(--text-primary); font-size: 0.9rem;">If Windows SmartScreen Appears:</strong>
-        </div>
-        <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">
-          Click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>. ReconX is 100% clean, verified, and offline.
-        </p>
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 16px;">
+        <span style="background: rgba(46, 204, 113, 0.15); color: var(--text-success); border: 1px solid rgba(46, 204, 113, 0.3); font-weight: 600; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">100% Safe & Offline Setup</span>
+        <h2 style="font-size: 1.45rem; color: var(--text-primary); margin-top: 6px;">How to Install & Run ReconX (30 Seconds)</h2>
       </div>
 
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="#installation-guide" class="btn btn-primary" id="viewGuideFromModal" style="flex: 1; min-width: 180px;">
-          <i class="ph ph-book-open"></i> View Visual Guide
-        </a>
-        <button class="btn btn-outline" id="dismissModalBtn" style="padding: 10px 20px;">Got it, thanks!</button>
+      <!-- Step Navigation Pills -->
+      <div class="step-nav-bar" style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px;">
+        <button class="step-pill active" onclick="goToStep(0)"><span class="pill-num">1</span> Download</button>
+        <button class="step-pill" onclick="goToStep(1)"><span class="pill-num">2</span> More Info</button>
+        <button class="step-pill" onclick="goToStep(2)"><span class="pill-num">3</span> Run Anyway</button>
+        <button class="step-pill" onclick="goToStep(3)"><span class="pill-num">4</span> Wizard</button>
+        <button class="step-pill" onclick="goToStep(4)"><span class="pill-num">5</span> Shortcut</button>
+        <button class="step-pill" onclick="goToStep(5)"><span class="pill-num">6</span> Launch</button>
       </div>
+
+      <!-- Showcase Box -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 18px; margin-bottom: 16px;">
+        <div style="margin-bottom: 12px;">
+          <span id="guideStepBadge" style="background: var(--text-accent); color: white; font-weight: 700; font-size: 0.75rem; padding: 3px 10px; border-radius: 14px; text-transform: uppercase;">Step 1 of 6</span>
+          <h3 id="guideStepTitle" style="font-size: 1.2rem; color: var(--text-primary); margin-top: 6px;">Download & Double-Click ReconX_Setup.exe</h3>
+          <p id="guideStepDesc" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; line-height: 1.5;">Click the download button to get <code>ReconX_Setup.exe</code>, then open your Downloads folder and double-click the setup file.</p>
+        </div>
+
+        <div style="position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-subtle); background: #0b0202; min-height: 280px; max-height: 380px; display: flex; align-items: center; justify-content: center;">
+          <img id="guideStepImg" src="assets/guide/step1_download.png" alt="Installation Step Screenshot" style="width: 100%; max-height: 380px; object-fit: contain; display: block; transition: opacity 0.2s ease;">
+        </div>
+      </div>
+
+      <!-- Navigation Action Controls -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <button id="prevStepBtn" class="btn btn-outline" onclick="prevStep()" disabled style="opacity: 0.4; cursor: not-allowed; padding: 8px 16px; font-size: 0.9rem;">
+          <i class="ph ph-arrow-left"></i> Previous
+        </button>
+
+        <div style="display: flex; gap: 5px;" id="stepDots">
+          <span class="step-dot active"></span>
+          <span class="step-dot"></span>
+          <span class="step-dot"></span>
+          <span class="step-dot"></span>
+          <span class="step-dot"></span>
+          <span class="step-dot"></span>
+        </div>
+
+        <button id="nextStepBtn" class="btn btn-primary" onclick="nextStep()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 20px; font-size: 0.9rem;">
+          <span>Next Step</span> <i class="ph ph-arrow-right"></i>
+        </button>
+      </div>
+
     </div>
   </div>
 

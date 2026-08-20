@@ -177,54 +177,47 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
     }
 
-    // Download Modal Logic
-    const downloadModal = document.getElementById('downloadModal');
-    const closeBtn = document.getElementById('closeDownloadModal');
-    const dismissBtn = document.getElementById('dismissModalBtn');
-    const viewGuideBtn = document.getElementById('viewGuideFromModal');
+    // Guide Modal Popup Controls
+    const guideModal = document.getElementById('guideModal');
 
-    function openDownloadModal() {
-        if (downloadModal) {
-            downloadModal.style.display = 'flex';
+    window.openGuideModal = function(stepIdx = 0) {
+        if (guideModal) {
+            guideModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            goToStep(stepIdx);
         }
-    }
+    };
 
-    function closeDownloadModal() {
-        if (downloadModal) {
-            downloadModal.style.display = 'none';
+    window.closeGuideModal = function() {
+        if (guideModal) {
+            guideModal.style.display = 'none';
+            document.body.style.overflow = '';
         }
-    }
+    };
 
-    // Trigger modal when clicking any download link
-    document.querySelectorAll('a[download], .download-trigger').forEach(btn => {
-        btn.addEventListener('click', () => {
-            setTimeout(openDownloadModal, 400);
+    // Close guide modal on clicking outside or ESC
+    if (guideModal) {
+        guideModal.addEventListener('click', (e) => {
+            if (e.target === guideModal) {
+                closeGuideModal();
+            }
         });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && guideModal && guideModal.style.display === 'flex') {
+            closeGuideModal();
+        }
     });
 
-    if (closeBtn) closeBtn.addEventListener('click', closeDownloadModal);
-    if (dismissBtn) dismissBtn.addEventListener('click', closeDownloadModal);
-    
-    if (viewGuideBtn) {
-        viewGuideBtn.addEventListener('click', (e) => {
-            closeDownloadModal();
-            const guideEl = document.getElementById('installation-guide');
-            if (guideEl) {
-                setTimeout(() => {
-                    guideEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            }
+    // When clicking any download link, open the Setup Guide Popup automatically after download begins
+    document.querySelectorAll('a[download], .download-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setTimeout(() => {
+                openGuideModal(0);
+            }, 600);
         });
-    }
-
-    // Close on clicking outside modal card
-    if (downloadModal) {
-        downloadModal.addEventListener('click', (e) => {
-            if (e.target === downloadModal) {
-                closeDownloadModal();
-            }
-        });
-    }
+    });
 });
 
 // === INTERACTIVE INSTALLATION GUIDE CONTROLLER ===
@@ -290,7 +283,7 @@ function goToStep(index) {
         setTimeout(() => {
             img.src = step.img;
             img.style.opacity = '1';
-        }, 150);
+        }, 120);
     }
 
     // Update Pills
@@ -320,7 +313,7 @@ function goToStep(index) {
 
     if (nextBtn) {
         if (index === guideSteps.length - 1) {
-            nextBtn.innerHTML = `<span>Download Now</span> <i class="ph ph-download-simple"></i>`;
+            nextBtn.innerHTML = `<span>Download Setup</span> <i class="ph ph-download-simple"></i>`;
             nextBtn.onclick = () => {
                 window.location.href = "https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe";
             };
