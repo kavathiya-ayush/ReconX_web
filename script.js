@@ -176,4 +176,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
         animate();
     }
+
+    // Download Modal Logic
+    const downloadModal = document.getElementById('downloadModal');
+    const closeBtn = document.getElementById('closeDownloadModal');
+    const dismissBtn = document.getElementById('dismissModalBtn');
+    const viewGuideBtn = document.getElementById('viewGuideFromModal');
+
+    function openDownloadModal() {
+        if (downloadModal) {
+            downloadModal.style.display = 'flex';
+        }
+    }
+
+    function closeDownloadModal() {
+        if (downloadModal) {
+            downloadModal.style.display = 'none';
+        }
+    }
+
+    // Trigger modal when clicking any download link
+    document.querySelectorAll('a[download], .download-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setTimeout(openDownloadModal, 400);
+        });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeDownloadModal);
+    if (dismissBtn) dismissBtn.addEventListener('click', closeDownloadModal);
+    
+    if (viewGuideBtn) {
+        viewGuideBtn.addEventListener('click', (e) => {
+            closeDownloadModal();
+            const guideEl = document.getElementById('installation-guide');
+            if (guideEl) {
+                setTimeout(() => {
+                    guideEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+    }
+
+    // Close on clicking outside modal card
+    if (downloadModal) {
+        downloadModal.addEventListener('click', (e) => {
+            if (e.target === downloadModal) {
+                closeDownloadModal();
+            }
+        });
+    }
 });
