@@ -318,10 +318,15 @@
     <div class="guide-modal-card">
       <button class="download-modal-close" onclick="closeGuideModal()" aria-label="Close Modal">&times;</button>
       
-      <!-- Modal Header -->
-      <div style="text-align: center; margin-bottom: 16px;">
-        <span style="background: rgba(46, 204, 113, 0.15); color: var(--text-success); border: 1px solid rgba(46, 204, 113, 0.3); font-weight: 600; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">100% Safe & Offline Setup</span>
-        <h2 style="font-size: 1.45rem; color: var(--text-primary); margin-top: 6px;">How to Install & Run ReconX (30 Seconds)</h2>
+      <!-- Modal Header with Direct Download Button -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; padding-right: 36px;">
+        <div>
+          <span style="background: rgba(46, 204, 113, 0.15); color: var(--text-success); border: 1px solid rgba(46, 204, 113, 0.3); font-weight: 600; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">100% Safe & Offline Setup</span>
+          <h2 style="font-size: 1.35rem; color: var(--text-primary); margin-top: 4px;">Windows Installation Guide</h2>
+        </div>
+        <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe" class="btn btn-primary" download style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; padding: 8px 16px;">
+          <i class="ph ph-download-simple"></i> Download ReconX_Setup.exe
+        </a>
       </div>
 
       <!-- Step Navigation Pills -->
@@ -336,10 +341,12 @@
 
       <!-- Showcase Box -->
       <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 18px; margin-bottom: 16px;">
-        <div style="margin-bottom: 12px;">
-          <span id="guideStepBadge" style="background: var(--text-accent); color: white; font-weight: 700; font-size: 0.75rem; padding: 3px 10px; border-radius: 14px; text-transform: uppercase;">Step 1 of 6</span>
-          <h3 id="guideStepTitle" style="font-size: 1.2rem; color: var(--text-primary); margin-top: 6px;">Download & Double-Click ReconX_Setup.exe</h3>
-          <p id="guideStepDesc" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; line-height: 1.5;">Click the download button to get <code>ReconX_Setup.exe</code>, then open your Downloads folder and double-click the setup file.</p>
+        <div style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <span id="guideStepBadge" style="background: var(--text-accent); color: white; font-weight: 700; font-size: 0.75rem; padding: 3px 10px; border-radius: 14px; text-transform: uppercase;">Step 1 of 6</span>
+            <h3 id="guideStepTitle" style="font-size: 1.2rem; color: var(--text-primary); margin-top: 6px;">Download & Double-Click ReconX_Setup.exe</h3>
+            <p id="guideStepDesc" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; line-height: 1.5;">Click the download button to get <code>ReconX_Setup.exe</code>, then open your Downloads folder and double-click the setup file.</p>
+          </div>
         </div>
 
         <div style="position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-subtle); background: #0b0202; min-height: 280px; max-height: 380px; display: flex; align-items: center; justify-content: center;">
@@ -362,9 +369,14 @@
           <span class="step-dot"></span>
         </div>
 
-        <button id="nextStepBtn" class="btn btn-primary" onclick="nextStep()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 20px; font-size: 0.9rem;">
-          <span>Next Step</span> <i class="ph ph-arrow-right"></i>
-        </button>
+        <div style="display: flex; gap: 8px;">
+          <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe" class="btn btn-outline" download style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; font-size: 0.9rem;">
+            <i class="ph ph-download-simple"></i> Download
+          </a>
+          <button id="nextStepBtn" class="btn btn-primary" onclick="nextStep()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 20px; font-size: 0.9rem;">
+            <span>Next Step</span> <i class="ph ph-arrow-right"></i>
+          </button>
+        </div>
       </div>
 
     </div>
