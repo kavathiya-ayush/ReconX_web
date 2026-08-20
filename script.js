@@ -313,10 +313,8 @@ function goToStep(index) {
 
     if (nextBtn) {
         if (index === guideSteps.length - 1) {
-            nextBtn.innerHTML = `<span>Download Setup</span> <i class="ph ph-download-simple"></i>`;
-            nextBtn.onclick = () => {
-                window.location.href = "https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe";
-            };
+            nextBtn.innerHTML = `<span>Got It / Done</span> <i class="ph ph-check-circle"></i>`;
+            nextBtn.onclick = closeGuideModal;
         } else {
             nextBtn.innerHTML = `<span>Next Step</span> <i class="ph ph-arrow-right"></i>`;
             nextBtn.onclick = nextStep;
