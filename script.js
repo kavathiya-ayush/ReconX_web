@@ -260,6 +260,21 @@ const guideSteps = [
     }
 ];
 
+// Preload all guide images into browser memory immediately
+const preloadedGuideImages = [];
+function preloadGuideImages() {
+    guideSteps.forEach(step => {
+        const img = new Image();
+        img.src = step.img;
+        preloadedGuideImages.push(img);
+    });
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadGuideImages);
+} else {
+    preloadGuideImages();
+}
+
 let currentStepIndex = 0;
 
 function goToStep(index) {
@@ -279,11 +294,8 @@ function goToStep(index) {
     if (desc) desc.innerHTML = step.desc;
     
     if (img) {
-        img.style.opacity = '0';
-        setTimeout(() => {
-            img.src = step.img;
-            img.style.opacity = '1';
-        }, 120);
+        img.src = step.img;
+        img.style.opacity = '1';
     }
 
     // Update Pills
