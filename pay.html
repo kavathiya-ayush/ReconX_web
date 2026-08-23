@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReconX - Secure Checkout & License Activation</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-4 selection:bg-emerald-500 selection:text-black">
+    
+    <div class="max-w-md w-full bg-slate-900/90 backdrop-blur-2xl border border-slate-800 rounded-3xl p-8 shadow-2xl text-center relative overflow-hidden">
+        <!-- Ambient Background Glow -->
+        <div class="absolute -top-28 -left-28 w-56 h-56 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-28 -right-28 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Logo / Shield Icon -->
+        <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-inner">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+
+        <h1 class="text-2xl font-extrabold tracking-tight text-white mb-1">ReconX License Checkout</h1>
+        <p class="text-xs text-slate-400 mb-6">Device Auth Key: <span class="font-mono text-emerald-400 font-bold px-2 py-0.5 bg-emerald-500/10 rounded-md border border-emerald-500/20" id="displayMachineId">Loading...</span></p>
+
+        <!-- Order Summary Card -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 mb-6 text-left">
+            <div class="flex justify-between items-center mb-2.5">
+                <span class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Product</span>
+                <span class="text-xs font-bold text-slate-200" id="displayPlan">Unlimited Conversion</span>
+            </div>
+            <div class="flex justify-between items-center mb-3">
+                <span class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Validity</span>
+                <span class="text-xs font-bold text-emerald-400" id="displayDays">30 Days</span>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-slate-700/70">
+                <span class="text-sm font-semibold text-slate-300">Total Amount</span>
+                <span class="text-2xl font-black text-white" id="displayAmount">₹349</span>
+            </div>
+        </div>
+
+        <!-- Action Area -->
+        <div id="paymentActionArea">
+            <button onclick="launchRazorpay()" id="payBtn" class="w-full bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-slate-950 font-bold py-4 px-6 rounded-2xl transition-all shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 text-base cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <span id="payBtnText">Pay Now (UPI, QR, Cards, NetBanking)</span>
+            </button>
+            <p class="text-xs text-slate-500 mt-3">Clicking Pay Now will open the Razorpay secure gateway.</p>
+        </div>
+
+        <!-- Success Area -->
+        <div id="successArea" class="hidden flex-col items-center justify-center py-4 animate-fade-in">
+            <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mb-3 border border-emerald-500/40">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-1">Payment Successful!</h2>
+            <p class="text-xs text-emerald-400 mb-2 font-medium">License has been activated for your device.</p>
+            <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-3 text-xs text-slate-300 w-full mt-2">
+                You can now return to <strong>ReconX</strong> on your PC. It will unlock automatically!
+            </div>
+        </div>
+
+        <!-- Security Footer -->
+        <div class="mt-8 pt-4 border-t border-slate-800/80 flex flex-col items-center gap-2 text-[11px] text-slate-500">
+            <div class="flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                <span>256-Bit Banking Grade SSL Encryption</span>
+            </div>
+            <div>Official Razorpay Verified Merchant &bull; <a href="/refund.html" class="hover:text-slate-400 underline">Refund Policy</a> &bull; <a href="/terms.html" class="hover:text-slate-400 underline">Terms</a></div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('order_id') || '';
+        const machineId = urlParams.get('machine_id') || 'UNKNOWN';
+        const days = parseInt(urlParams.get('days') || '30');
+        const amount = parseInt(urlParams.get('amount') || '349');
+        const rzpKey = urlParams.get('key') || 'rzp_live_TSmj2315sRmP4a';
+
+        document.getElementById('displayMachineId').innerText = machineId;
+        document.getElementById('displayDays').innerText = `${days} Days`;
+        document.getElementById('displayAmount').innerText = `₹${amount}`;
+        document.getElementById('displayPlan').innerText = days >= 60 ? 'Pro Multi-Month Plan' : '1 Month Pro Plan';
+
+        let rzpInstance = null;
+
+        function launchRazorpay() {
+            const btn = document.getElementById('payBtnText');
+            if (btn) btn.innerText = "Opening Payment Gateway...";
+
+            const options = {
+                key: rzpKey,
+                amount: amount * 100,
+                currency: "INR",
+                name: "ReconX Software",
+                description: `${days} Days License (${machineId})`,
+                order_id: orderId,
+                prefill: {
+                    contact: "",
+                    email: ""
+                },
+                theme: {
+                    color: "#10b981"
+                },
+                handler: async function (response) {
+                    document.getElementById('paymentActionArea').classList.add('hidden');
+                    document.getElementById('successArea').classList.remove('hidden');
+                    document.getElementById('successArea').classList.add('flex');
+
+                    try {
+                        await fetch('https://recon-x-admin.vercel.app/api/verify_payment', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_signature: response.razorpay_signature,
+                                machine_id: machineId,
+                                days: days
+                            })
+                        });
+                    } catch (e) {
+                        console.error("Verification callback notice:", e);
+                    }
+                },
+                modal: {
+                    ondismiss: function() {
+                        if (btn) btn.innerText = "Pay Now (UPI, QR, Cards, NetBanking)";
+                    }
+                }
+            };
+
+            rzpInstance = new Razorpay(options);
+            rzpInstance.open();
+        }
+
+        // Auto launch Razorpay after 400ms
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(launchRazorpay, 400);
+        });
+    </script>
+</body>
+</html>
