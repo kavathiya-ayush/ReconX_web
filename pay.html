@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReconX - Secure Checkout & License Activation</title>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <title>ReconX - Secure Checkout</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Razorpay Checkout Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-4 selection:bg-emerald-500 selection:text-black">
-    
-    <div class="max-w-md w-full bg-slate-900/90 backdrop-blur-2xl border border-slate-800 rounded-3xl p-8 shadow-2xl text-center relative overflow-hidden">
-        <!-- Ambient Background Glow -->
-        <div class="absolute -top-28 -left-28 w-56 h-56 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-28 -right-28 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-8 shadow-2xl text-center backdrop-blur-xl relative overflow-hidden">
+        <!-- Ambient Glow -->
+        <div class="absolute -top-24 -left-24 w-48 h-48 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
-        <!-- Logo / Shield Icon -->
+        <!-- Lock Icon Header -->
         <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-inner">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
         </div>
@@ -64,6 +64,18 @@
             </div>
         </div>
 
+        <!-- Cancelled Area -->
+        <div id="cancelledArea" class="hidden flex-col items-center justify-center py-4 animate-fade-in">
+            <div class="w-14 h-14 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mb-3 border border-rose-500/40">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-1">Payment Cancelled</h2>
+            <p class="text-xs text-slate-400 mb-4">You closed the payment gateway without completing the transaction.</p>
+            <button onclick="launchRazorpay()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold py-2.5 px-5 rounded-xl border border-slate-700 transition-all cursor-pointer">
+                Retry Payment
+            </button>
+        </div>
+
         <!-- Security Footer -->
         <div class="mt-8 pt-4 border-t border-slate-800/80 flex flex-col items-center gap-2 text-[11px] text-slate-500">
             <div class="flex items-center gap-1.5">
@@ -88,10 +100,33 @@
         document.getElementById('displayPlan').innerText = days >= 60 ? 'Pro Multi-Month Plan' : '1 Month Pro Plan';
 
         let rzpInstance = null;
+        let isPaymentCompleted = false;
+
+        async function notifyCancellation() {
+            if (isPaymentCompleted || !orderId) return;
+            try {
+                // Notify cloud backend
+                fetch('https://recon-x-admin.vercel.app/api/cancel_payment_order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ order_id: orderId, machine_id: machineId })
+                }).catch(() => {});
+
+                // Also notify local desktop app if open
+                fetch('http://127.0.0.1:5000/api/cancel_payment_order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ order_id: orderId })
+                }).catch(() => {});
+            } catch(e) {}
+        }
 
         function launchRazorpay() {
             const btn = document.getElementById('payBtnText');
             if (btn) btn.innerText = "Opening Payment Gateway...";
+
+            document.getElementById('cancelledArea').classList.add('hidden');
+            document.getElementById('paymentActionArea').classList.remove('hidden');
 
             const options = {
                 key: rzpKey,
@@ -108,7 +143,9 @@
                     color: "#10b981"
                 },
                 handler: async function (response) {
+                    isPaymentCompleted = true;
                     document.getElementById('paymentActionArea').classList.add('hidden');
+                    document.getElementById('cancelledArea').classList.add('hidden');
                     document.getElementById('successArea').classList.remove('hidden');
                     document.getElementById('successArea').classList.add('flex');
 
@@ -130,7 +167,13 @@
                 },
                 modal: {
                     ondismiss: function() {
-                        if (btn) btn.innerText = "Pay Now (UPI, QR, Cards, NetBanking)";
+                        if (!isPaymentCompleted) {
+                            if (btn) btn.innerText = "Pay Now (UPI, QR, Cards, NetBanking)";
+                            document.getElementById('paymentActionArea').classList.add('hidden');
+                            document.getElementById('cancelledArea').classList.remove('hidden');
+                            document.getElementById('cancelledArea').classList.add('flex');
+                            notifyCancellation();
+                        }
                     }
                 }
             };
@@ -138,6 +181,12 @@
             rzpInstance = new Razorpay(options);
             rzpInstance.open();
         }
+
+        window.addEventListener('beforeunload', () => {
+            if (!isPaymentCompleted) {
+                notifyCancellation();
+            }
+        });
 
         // Auto launch Razorpay after 400ms
         window.addEventListener('DOMContentLoaded', () => {
