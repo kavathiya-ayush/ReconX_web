@@ -64,18 +64,6 @@
             </div>
         </div>
 
-        <!-- Cancelled Area -->
-        <div id="cancelledArea" class="hidden flex-col items-center justify-center py-4 animate-fade-in">
-            <div class="w-14 h-14 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mb-3 border border-rose-500/40">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </div>
-            <h2 class="text-xl font-bold text-white mb-1">Payment Cancelled</h2>
-            <p class="text-xs text-slate-400 mb-4">You closed the payment gateway without completing the transaction.</p>
-            <button onclick="launchRazorpay()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold py-2.5 px-5 rounded-xl border border-slate-700 transition-all cursor-pointer">
-                Retry Payment
-            </button>
-        </div>
-
         <!-- Security Footer -->
         <div class="mt-8 pt-4 border-t border-slate-800/80 flex flex-col items-center gap-2 text-[11px] text-slate-500">
             <div class="flex items-center gap-1.5">
@@ -102,21 +90,29 @@
         let rzpInstance = null;
         let isPaymentCompleted = false;
 
-        async function notifyCancellation() {
+        function notifyCancellation() {
             if (isPaymentCompleted || !orderId) return;
-            try {
-                // Notify cloud backend
-                fetch('https://recon-x-admin.vercel.app/api/cancel_payment_order', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ order_id: orderId, machine_id: machineId })
-                }).catch(() => {});
+            
+            const payload = JSON.stringify({ order_id: orderId, machine_id: machineId });
+            const blob = new Blob([payload], { type: 'application/json' });
 
-                // Also notify local desktop app if open
+            // 1. sendBeacon directly to local desktop app
+            try {
+                navigator.sendBeacon('http://127.0.0.1:5000/api/cancel_payment_order', blob);
+            } catch(e) {}
+
+            // 2. sendBeacon to cloud backend
+            try {
+                navigator.sendBeacon('https://recon-x-admin.vercel.app/api/cancel_payment_order', blob);
+            } catch(e) {}
+
+            // Fallback fetch
+            try {
                 fetch('http://127.0.0.1:5000/api/cancel_payment_order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ order_id: orderId })
+                    body: payload,
+                    keepalive: true
                 }).catch(() => {});
             } catch(e) {}
         }
@@ -124,9 +120,6 @@
         function launchRazorpay() {
             const btn = document.getElementById('payBtnText');
             if (btn) btn.innerText = "Opening Payment Gateway...";
-
-            document.getElementById('cancelledArea').classList.add('hidden');
-            document.getElementById('paymentActionArea').classList.remove('hidden');
 
             const options = {
                 key: rzpKey,
@@ -145,7 +138,6 @@
                 handler: async function (response) {
                     isPaymentCompleted = true;
                     document.getElementById('paymentActionArea').classList.add('hidden');
-                    document.getElementById('cancelledArea').classList.add('hidden');
                     document.getElementById('successArea').classList.remove('hidden');
                     document.getElementById('successArea').classList.add('flex');
 
@@ -169,9 +161,6 @@
                     ondismiss: function() {
                         if (!isPaymentCompleted) {
                             if (btn) btn.innerText = "Pay Now (UPI, QR, Cards, NetBanking)";
-                            document.getElementById('paymentActionArea').classList.add('hidden');
-                            document.getElementById('cancelledArea').classList.remove('hidden');
-                            document.getElementById('cancelledArea').classList.add('flex');
                             notifyCancellation();
                         }
                     }
@@ -182,10 +171,12 @@
             rzpInstance.open();
         }
 
+        // Notify desktop app if user closes tab or navigates away
+        window.addEventListener('pagehide', () => {
+            if (!isPaymentCompleted) notifyCancellation();
+        });
         window.addEventListener('beforeunload', () => {
-            if (!isPaymentCompleted) {
-                notifyCancellation();
-            }
+            if (!isPaymentCompleted) notifyCancellation();
         });
 
         // Auto launch Razorpay after 400ms
