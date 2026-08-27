@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.png$
+Allow: /*.ico$
+Allow: /*.jpg$
+Allow: /*.svg$
+Allow: /*.webmanifest$
+
 Sitemap: https://reconx-sigma.vercel.app/sitemap.xml

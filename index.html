@@ -10,14 +10,19 @@
   <meta name="title" content="ReconX | Bank Statement Converter - PDF to Excel & CSV (100% Offline)">
   <meta name="description" content="ReconX is the ultimate offline Bank Statement PDF to Excel & CSV Converter. Convert password-protected statements from SBI, HDFC, ICICI, Kotak, Axis, PNB, and all Indian banks with 100% accuracy.">
   <meta name="keywords" content="reconx, reconx converter, reconx pdf to excel, reconx bank statement converter, reconx excel converter, bank statement converter, bank statement pdf to excel, pdf to excel bank statement, convert bank statement to excel, convert pdf to excel free, sbi bank statement to excel, hdfc bank statement to excel, icici bank statement to excel, convert password protected bank statement, tally bank reconciliation, chartered accountant software">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="application-name" content="ReconX">
+  <meta name="apple-mobile-web-app-title" content="ReconX">
+  <meta name="theme-color" content="#090d16">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://reconx-sigma.vercel.app/">
   <meta property="og:title" content="ReconX | Bank Statement Converter - PDF to Excel & CSV">
   <meta property="og:description" content="Convert bank statement PDFs (SBI, HDFC, ICICI, Kotak, Axis, PNB) to clean Excel spreadsheets offline with zero data leakage.">
-  <meta property="og:image" content="https://reconx-sigma.vercel.app/favicon-192x192.png">
+  <meta property="og:image" content="https://reconx-sigma.vercel.app/assets/icon.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
   <meta property="og:site_name" content="ReconX">
   
   <!-- Twitter -->
@@ -25,10 +30,21 @@
   <meta property="twitter:url" content="https://reconx-sigma.vercel.app/">
   <meta property="twitter:title" content="ReconX | Bank Statement Converter - PDF to Excel">
   <meta property="twitter:description" content="Convert bank statement PDFs to clean Excel spreadsheets offline. 100% private with password-protected PDF support.">
-  <meta property="twitter:image" content="https://reconx-sigma.vercel.app/favicon-192x192.png">
+  <meta property="twitter:image" content="https://reconx-sigma.vercel.app/assets/icon.png">
   
   <!-- Canonical URL -->
   <link rel="canonical" href="https://reconx-sigma.vercel.app/">
+
+  <!-- Favicons & App Icons (Strict Google Search & Mobile Compliant) -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   
@@ -37,11 +53,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   
-  <!-- Favicons (Google Search Compliant) -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
   <!-- Prefetch Guide Modal Images for Instant 0-second Switching -->
   <link rel="prefetch" href="assets/guide/step1_download.png" as="image">
   <link rel="prefetch" href="assets/guide/step2_smartscreen_info.png" as="image">
@@ -53,93 +64,126 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Schema Markup: WebSite (Tells Google to display 'ReconX' as Site Name) -->
+  <!-- Comprehensive Schema Markup: WebSite + Organization + SoftwareApplication + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "ReconX",
-    "alternateName": [
-      "ReconX",
-      "ReconX Converter",
-      "ReconX PDF to Excel",
-      "ReconX Bank Statement Converter",
-      "ReconX Excel Converter",
-      "Bank Statement Converter",
-      "Bank Statement PDF to Excel Converter"
-    ],
-    "url": "https://reconx-sigma.vercel.app/"
-  }
-  </script>
-
-  <!-- Schema Markup: Software Application -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "ReconX Bank Statement to Excel Converter",
-    "operatingSystem": "Windows 10, Windows 11",
-    "applicationCategory": "BusinessApplication",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "128"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "INR",
-      "description": "Free trial with 5 conversions included"
-    },
-    "description": "100% offline desktop application for converting PDF bank statements into clean, reconciled Excel spreadsheets. Zero cloud uploads."
-  }
-  </script>
-
-  <!-- Schema Markup: FAQPage for Google Rich Snippets -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "How do I convert a password-protected bank statement PDF to Excel?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ReconX supports password-protected PDFs. When you drop your bank statement PDF into ReconX, you can enter the password (such as your PAN or Date of Birth) and ReconX decrypts and converts it directly into a formatted Excel file locally."
-        }
+        "@type": "WebSite",
+        "@id": "https://reconx-sigma.vercel.app/#website",
+        "url": "https://reconx-sigma.vercel.app/",
+        "name": "ReconX",
+        "alternateName": [
+          "ReconX",
+          "ReconX Converter",
+          "ReconX Bank Statement Converter",
+          "ReconX PDF to Excel",
+          "ReconX Excel Converter",
+          "Bank Statement Converter",
+          "Bank Statement PDF to Excel Converter"
+        ],
+        "publisher": {
+          "@id": "https://reconx-sigma.vercel.app/#organization"
+        },
+        "inLanguage": "en-US"
       },
       {
-        "@type": "Question",
-        "name": "Is ReconX 100% offline and safe for client financial data?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, ReconX processes 100% of your bank statements locally on your computer. Your financial data is never sent to any external server or cloud, ensuring complete data security for Chartered Accountants and businesses."
-        }
+        "@type": "Organization",
+        "@id": "https://reconx-sigma.vercel.app/#organization",
+        "name": "ReconX",
+        "url": "https://reconx-sigma.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://reconx-sigma.vercel.app/#logo",
+          "url": "https://reconx-sigma.vercel.app/assets/icon.png",
+          "contentUrl": "https://reconx-sigma.vercel.app/assets/icon.png",
+          "caption": "ReconX Logo",
+          "width": 512,
+          "height": 512
+        },
+        "image": "https://reconx-sigma.vercel.app/assets/icon.png",
+        "description": "ReconX is a high-speed, 100% offline desktop Bank Statement Converter for converting financial PDF statements into clean, reconciled Excel (.xlsx) and CSV files.",
+        "sameAs": [
+          "https://github.com/kavathiya-ayush/ReconX_web",
+          "https://github.com/kavathiya-ayush/CA-Converter-Releases"
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Which Indian banks are supported by ReconX?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ReconX features an AI layout engine supporting all major Indian banks including HDFC Bank, State Bank of India (SBI), ICICI Bank, Axis Bank, Kotak Mahindra Bank, Punjab National Bank (PNB), Bank of Baroda, and Canara Bank."
-        }
+        "@type": "SoftwareApplication",
+        "@id": "https://reconx-sigma.vercel.app/#software",
+        "name": "ReconX - Bank Statement Converter",
+        "operatingSystem": "Windows 10, Windows 11",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "FinanceApplication",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "128",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "description": "Free trial with 5 conversions included. No credit card required."
+        },
+        "description": "100% offline desktop application for converting PDF bank statements into clean, reconciled Excel spreadsheets with zero data leakage.",
+        "featureList": [
+          "100% Offline Local Processing",
+          "Password Protected Bank Statement Support",
+          "Automatic Bank Layout Detection AI",
+          "Direct Export to Excel XLSX and CSV",
+          "Mathematical Running Balance Validation",
+          "Support for SBI, HDFC, ICICI, Kotak, Axis, PNB, and all Indian Banks"
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Can I import the converted Excel statement into Tally or Zoho Books?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, ReconX exports clean, reconciled XLSX and CSV files with separated Date, Narration/Description, Debit, Credit, and Balance columns ready for direct import into Tally, Zoho Books, Busy, and Excel."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How to install ReconX on Windows if Windows SmartScreen appears?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Download ReconX_Setup.exe and double-click to run. If the blue Windows SmartScreen appears, click 'More info' and then click 'Run anyway'. Follow the setup wizard to complete installation in 30 seconds."
-        }
+        "@type": "FAQPage",
+        "@id": "https://reconx-sigma.vercel.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I convert a password-protected bank statement PDF to Excel?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ReconX supports password-protected PDFs. When you drop your bank statement PDF into ReconX, you can enter the password (such as your PAN or Date of Birth) and ReconX decrypts and converts it directly into a formatted Excel file locally."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is ReconX 100% offline and safe for client financial data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, ReconX processes 100% of your bank statements locally on your computer. Your financial data is never sent to any external server or cloud, ensuring complete data security for Chartered Accountants and businesses."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which Indian banks are supported by ReconX?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ReconX features an AI layout engine supporting all major Indian banks including HDFC Bank, State Bank of India (SBI), ICICI Bank, Axis Bank, Kotak Mahindra Bank, Punjab National Bank (PNB), Bank of Baroda, and Canara Bank."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I import the converted Excel statement into Tally or Zoho Books?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, ReconX exports clean, reconciled XLSX and CSV files with separated Date, Narration/Description, Debit, Credit, and Balance columns ready for direct import into Tally, Zoho Books, Busy, and Excel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to install ReconX on Windows if Windows SmartScreen appears?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Download ReconX_Setup.exe and double-click to run. If the blue Windows SmartScreen appears, click 'More info' and then click 'Run anyway'. Follow the setup wizard to complete installation in 30 seconds."
+            }
+          }
+        ]
       }
     ]
   }
