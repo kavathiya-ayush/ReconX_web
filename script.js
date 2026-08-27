@@ -346,3 +346,35 @@ function prevStep() {
     }
 }
 
+// Layer #10: Analytics & Conversion Event Tracking
+document.addEventListener('DOMContentLoaded', () => {
+    // Track Download triggers
+    document.querySelectorAll('.download-trigger, #heroDownloadBtn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'download_reconx', {
+                    'event_category': 'conversion',
+                    'event_label': 'ReconX_Setup.exe'
+                });
+            }
+            console.log('[Analytics] Tracked ReconX Download Click');
+        });
+    });
+
+    // Track Plan Select triggers
+    document.querySelectorAll('.plan-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const planCard = this.closest('.pricing-card');
+            const planName = planCard ? planCard.querySelector('.plan-name')?.innerText : 'Plan';
+            if (typeof gtag === 'function') {
+                gtag('event', 'select_pricing_plan', {
+                    'event_category': 'conversion',
+                    'event_label': planName
+                });
+            }
+            console.log('[Analytics] Tracked Plan Click:', planName);
+        });
+    });
+});
+
+
