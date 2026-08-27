@@ -193,20 +193,26 @@
 
   <!-- Top Navigation -->
   <nav class="navbar">
-    <div class="nav-brand">
+    <a href="/" class="nav-brand">
       <img src="assets/icon.png" alt="ReconX Logo" width="32" height="32" style="border-radius: 8px;">
       ReconX
+    </a>
+
+    <div class="nav-links">
+      <a href="#supported-banks" class="nav-link">Supported Banks</a>
+      <a href="#comparison" class="nav-link">ReconX vs Cloud</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="javascript:void(0)" onclick="openGuideModal(0)" class="nav-link"><i class="ph ph-question"></i> Setup Guide</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
     </div>
+
     <div class="nav-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
         <i class="ph ph-moon"></i>
       </button>
-      <a href="#supported-banks" class="btn btn-outline">Supported Banks</a>
-      <a href="#comparison" class="btn btn-outline">ReconX vs Cloud</a>
-      <a href="#how-it-works" class="btn btn-outline">How It Works</a>
-      <a href="javascript:void(0)" onclick="openGuideModal(0)" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;"><i class="ph ph-question"></i> Setup Guide</a>
-      <a href="#pricing" class="btn btn-outline">Pricing</a>
-      <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe" class="btn btn-primary download-trigger" download>Download for Windows</a>
+      <a href="https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe" class="btn btn-primary nav-cta-btn download-trigger" download>
+        <i class="ph ph-download-simple"></i> Download
+      </a>
     </div>
   </nav>
 
