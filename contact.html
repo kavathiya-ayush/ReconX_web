@@ -3,19 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - ReconX</title>
-  <meta name="description" content="Contact ReconX support for technical assistance, license activation, and bank statement converter queries.">
-  <meta name="robots" content="index, follow">
+  <title>Contact ReconX Support | Bank Statement Converter Help</title>
+  <meta name="description" content="Get in touch with the ReconX engineering support team for license activation, custom bank statement parser requests, and technical assistance.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="application-name" content="ReconX">
   <meta name="apple-mobile-web-app-title" content="ReconX">
   <meta name="theme-color" content="#090d16">
   
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://reconx-sigma.vercel.app/contact.html">
-  <meta property="og:title" content="Contact Us - ReconX">
+  <meta property="og:title" content="Contact ReconX Support | Bank Statement Converter Help">
   <meta property="og:description" content="Contact ReconX support for technical assistance, license activation, and bank statement converter queries.">
   <meta property="og:image" content="https://reconx-sigma.vercel.app/assets/icon.png">
   <meta property="og:site_name" content="ReconX">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://reconx-sigma.vercel.app/contact.html">
+  <meta name="twitter:title" content="Contact ReconX Support | Bank Statement Converter Help">
+  <meta name="twitter:description" content="Reach our support team for licensing help, custom bank statement parser updates, and instant activation.">
+  <meta name="twitter:image" content="https://reconx-sigma.vercel.app/assets/icon.png">
   
   <link rel="canonical" href="https://reconx-sigma.vercel.app/contact.html">
   
@@ -35,11 +43,68 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Structured Data: ContactPage + BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://reconx-sigma.vercel.app/contact.html#webpage",
+        "url": "https://reconx-sigma.vercel.app/contact.html",
+        "name": "Contact ReconX Support",
+        "description": "Customer support, technical assistance, and licensing support for ReconX Bank Statement Converter.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "ReconX",
+          "url": "https://reconx-sigma.vercel.app/",
+          "logo": "https://reconx-sigma.vercel.app/assets/icon.png"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://reconx-sigma.vercel.app/contact.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://reconx-sigma.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Contact Support",
+            "item": "https://reconx-sigma.vercel.app/contact.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
     .legal-container {
-      max-width: 860px;
+      max-width: 880px;
       margin: 40px auto 80px auto;
       padding: 0 24px;
+    }
+    .breadcrumb-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .breadcrumb-bar a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb-bar a:hover {
+      color: var(--text-accent);
     }
     .legal-card {
       background: var(--bg-card);
@@ -50,7 +115,7 @@
       box-shadow: var(--shadow-lg);
     }
     .legal-title {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       margin-bottom: 8px;
       color: var(--text-primary);
     }
@@ -78,7 +143,7 @@
       border-radius: 12px;
       padding: 24px;
     }
-    .contact-box h3 {
+    .contact-box h2, .contact-box h3 {
       font-size: 1.15rem;
       margin-bottom: 8px;
       color: var(--text-primary);
@@ -89,7 +154,7 @@
     .contact-box p {
       color: var(--text-secondary);
       font-size: 0.9rem;
-      line-height: 1.5;
+      line-height: 1.6;
     }
     .contact-box a {
       color: var(--text-accent);
@@ -102,7 +167,7 @@
 
   <!-- Top Navigation -->
   <nav class="navbar">
-    <a href="index.html" class="nav-brand" style="text-decoration: none; color: inherit;">
+    <a href="/" class="nav-brand" style="text-decoration: none; color: inherit;">
       <img src="assets/icon.png" alt="ReconX Logo" width="32" height="32" style="border-radius: 8px;">
       ReconX
     </a>
@@ -110,45 +175,69 @@
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
         <i class="ph ph-moon"></i>
       </button>
-      <a href="index.html" class="btn btn-outline">← Back to Home</a>
+      <a href="/" class="btn btn-outline">← Back to Home</a>
     </div>
   </nav>
 
   <div class="legal-container">
+    <!-- Breadcrumbs (Layer #6 Internal Linking) -->
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span style="color: var(--text-primary);">Contact Support</span>
+    </nav>
+
     <div class="legal-card">
-      <h1 class="legal-title">Contact Us</h1>
-      <p class="legal-subtitle">We are here to help. Reach out with questions, feedback, or support requests.</p>
+      <h1 class="legal-title">Contact Support & Licensing Help</h1>
+      <p class="legal-subtitle">We are here to assist you with license activations, custom bank parser formats, and technical queries.</p>
 
       <div class="contact-grid">
         <div class="contact-box">
-          <h3><i class="ph-duotone ph-envelope-simple" style="color: var(--text-accent); font-size: 1.4rem;"></i> Email Support</h3>
-          <p>For licensing, billing inquiries, and technical issues:</p>
+          <h2><i class="ph-duotone ph-envelope-simple" style="color: var(--text-accent); font-size: 1.4rem;"></i> Email Support</h2>
+          <p>For licensing assistance, payment verification, custom parser requests, and technical troubleshooting:</p>
           <p style="margin-top: 8px;"><a href="mailto:ayushkavathiya322@gmail.com">ayushkavathiya322@gmail.com</a></p>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Response time: Within 24 hours</p>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Standard response time: Within 24 hours</p>
         </div>
 
         <div class="contact-box">
-          <h3><i class="ph-duotone ph-whatsapp-logo" style="color: #25D366; font-size: 1.4rem;"></i> WhatsApp / Phone</h3>
-          <p>For instant assistance, custom bank parser requests, and urgent license activations:</p>
+          <h2><i class="ph-duotone ph-whatsapp-logo" style="color: #25D366; font-size: 1.4rem;"></i> WhatsApp Direct Support</h2>
+          <p>For urgent license activation, priority bank format onboarding, and quick assistance during tax audit deadlines:</p>
           <p style="margin-top: 8px;"><a href="https://wa.me/919999999999" target="_blank">+91 99999 99999</a></p>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Mon - Sat (9:00 AM - 8:00 PM IST)</p>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Operating Hours: Mon - Sat (9:00 AM - 8:00 PM IST)</p>
         </div>
       </div>
 
       <div class="contact-box" style="margin-bottom: 24px;">
-        <h3><i class="ph-duotone ph-map-pin" style="color: var(--text-accent); font-size: 1.4rem;"></i> Business Operating Address</h3>
+        <h2><i class="ph-duotone ph-map-pin" style="color: var(--text-accent); font-size: 1.4rem;"></i> Business Office & Operations</h2>
         <p style="margin-top: 4px;">
           <strong>ReconX Software Solutions</strong><br>
-          Gujarat, India (PIN: 360001)
+          Gujarat, India (PIN: 360001)<br>
+          Serving Chartered Accountants, Tax Auditors, and Businesses Across India.
         </p>
       </div>
 
-      <div class="contact-box">
-        <h3><i class="ph-duotone ph-headset" style="color: var(--text-accent); font-size: 1.4rem;"></i> In-App Direct Support</h3>
+      <div class="contact-box" style="margin-bottom: 24px;">
+        <h2><i class="ph-duotone ph-headset" style="color: var(--text-accent); font-size: 1.4rem;"></i> Direct In-App Diagnostics</h2>
         <p>
-          You can also click the floating <strong>"Customer Care"</strong> button directly inside the desktop ReconX application to send statement diagnostic files and error logs directly to our engineering team.
+          If a specific statement from a regional or co-operative bank fails to parse, click the floating <strong>"Customer Care"</strong> button directly inside the desktop ReconX application. It packages a safe diagnostic report so our team can add custom bank support within 24 hours.
         </p>
       </div>
+
+      <!-- Extended Help & FAQ for Content Depth (>300 words) -->
+      <div style="margin-top: 32px; border-top: 1px solid var(--border-subtle); padding-top: 24px;">
+        <h2 style="font-size: 1.25rem; color: var(--text-primary); margin-bottom: 12px;">Frequently Asked Support Questions</h2>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <h3 style="font-size: 0.98rem; color: var(--text-primary);">How quickly is my license activated after payment?</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Instant. When you complete payment via UPI on the checkout screen, the license unlocks automatically on your device within 5 seconds.</p>
+          </div>
+          <div>
+            <h3 style="font-size: 0.98rem; color: var(--text-primary);">Can I transfer my license to a new PC?</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Yes. Simply email us your old device auth key and new device auth key, and our support team will transfer your license within a few hours.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -156,13 +245,14 @@
   <footer class="footer">
     <div class="footer-content" style="flex-direction: column; gap: 16px; text-align: center;">
       <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: 0.9rem;">
-        <a href="terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
-        <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
-        <a href="refund.html" style="color: var(--text-secondary); text-decoration: none;">Refund Policy</a>
-        <a href="contact.html" style="color: var(--text-accent); text-decoration: none; font-weight: bold;">Contact Us</a>
+        <a href="/" style="color: var(--text-secondary); text-decoration: none;">Home</a>
+        <a href="/terms.html" style="color: var(--text-secondary); text-decoration: none;">Terms of Service</a>
+        <a href="/privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+        <a href="/refund.html" style="color: var(--text-secondary); text-decoration: none;">Refund Policy</a>
+        <a href="/contact.html" style="color: var(--text-accent); text-decoration: none; font-weight: bold;">Contact Us</a>
       </div>
       <div class="footer-copy">
-        &copy; 2026 ReconX Engine. All rights reserved.
+        &copy; 2026 ReconX Engine. All rights reserved. 100% Offline Bank Statement Converter.
       </div>
     </div>
   </footer>

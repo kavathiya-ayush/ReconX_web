@@ -1,0 +1,23 @@
+# ReconX - Bank Statement Converter Full Knowledge Document
+
+## Overview
+ReconX is a dedicated offline desktop utility for converting financial PDF statements into clean, structured Excel (.xlsx) and CSV spreadsheets. It is engineered specifically for Chartered Accountants (CAs), tax auditors, accountants, and businesses handling sensitive financial records.
+
+## Problem Solved
+Traditional online converters require uploading client bank statements to third-party cloud servers, risking severe data security and regulatory non-compliance. ReconX operates 100% locally on the user's computer with no cloud dependency.
+
+## Key Features & Bank Support
+- **Supported Banks:** SBI, HDFC, ICICI, Kotak Mahindra, Axis, PNB, Bank of Baroda, Canara Bank, Union Bank, IndusInd, YES Bank.
+- **Password Support:** Handles encrypted PDFs locally with custom passwords (e.g. PAN or Date of Birth).
+- **Balance Validation:** Validates transactions against running balances automatically.
+- **Tally Ready:** Output format is structured for direct import into Tally Prime, Zoho Books, Busy, and Excel.
+
+## Pricing
+- 1 Month: ₹349 (Unlimited conversions)
+- 2 Months: ₹599 (Most popular)
+- 3 Months: ₹849 (Best value)
+- Free Trial: 5 free conversions included
+
+## Official URLs
+- Website: https://reconx-sigma.vercel.app/
+- Download: https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe

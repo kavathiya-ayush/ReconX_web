@@ -1,0 +1,21 @@
+# ReconX - Bank Statement Converter
+
+> 100% Offline Bank Statement PDF to Excel & CSV Converter for Chartered Accountants, Tax Auditors, and Businesses.
+
+ReconX is a high-speed desktop software application designed for Windows that converts password-protected and multi-page PDF bank statements into clean, reconciled Excel (.xlsx) and CSV files. All processing occurs locally on the user's machine with zero cloud data uploads.
+
+## Key Capabilities
+- **100% Offline Local Processing:** Ensures bank-grade privacy with zero client financial data leakage.
+- **Password Decryption:** Natively unlocks password-protected statements (PAN, Date of Birth) locally.
+- **Supported Banks:** State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Kotak Mahindra Bank, Punjab National Bank (PNB), Bank of Baroda, Canara Bank, Union Bank, YES Bank, and 30+ Indian banks.
+- **Mathematical Balance Reconciliation:** Automatically validates opening balance + total debits/credits = closing balance.
+- **Direct Accounting Export:** Pre-formatted with separate Date, Narration, Cheque/Ref, Debit, Credit, and Balance columns for direct import into Tally Prime, Zoho Books, Busy, and Microsoft Excel.
+
+## Links & Documentation
+- [Official Website](https://reconx-sigma.vercel.app/)
+- [Download Windows Setup](https://github.com/kavathiya-ayush/CA-Converter-Releases/raw/main/ReconX_Setup.exe)
+- [Pricing & Plans](https://reconx-sigma.vercel.app/#pricing)
+- [Terms of Service](https://reconx-sigma.vercel.app/terms.html)
+- [Privacy Policy](https://reconx-sigma.vercel.app/privacy.html)
+- [Cancellation & Refund Policy](https://reconx-sigma.vercel.app/refund.html)
+- [Contact Support](https://reconx-sigma.vercel.app/contact.html)

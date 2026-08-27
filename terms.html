@@ -3,19 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service - ReconX</title>
-  <meta name="description" content="ReconX Terms of Service. Software licensing, usage rights, and offline local operations agreement.">
-  <meta name="robots" content="index, follow">
+  <title>Terms of Service & Licensing | ReconX Bank Converter</title>
+  <meta name="description" content="ReconX Terms of Service and software licensing policy. Official commercial rights, offline usage, and device activation agreement.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="application-name" content="ReconX">
   <meta name="apple-mobile-web-app-title" content="ReconX">
   <meta name="theme-color" content="#090d16">
   
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://reconx-sigma.vercel.app/terms.html">
-  <meta property="og:title" content="Terms of Service - ReconX">
+  <meta property="og:title" content="Terms of Service & Licensing | ReconX Bank Converter">
   <meta property="og:description" content="ReconX Terms of Service. Software licensing, usage rights, and offline local operations agreement.">
   <meta property="og:image" content="https://reconx-sigma.vercel.app/assets/icon.png">
   <meta property="og:site_name" content="ReconX">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://reconx-sigma.vercel.app/terms.html">
+  <meta name="twitter:title" content="Terms of Service & Licensing | ReconX Bank Converter">
+  <meta name="twitter:description" content="Software licensing agreement, commercial rights, and offline desktop terms for ReconX.">
+  <meta name="twitter:image" content="https://reconx-sigma.vercel.app/assets/icon.png">
   
   <link rel="canonical" href="https://reconx-sigma.vercel.app/terms.html">
   
@@ -35,11 +43,68 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Structured Data: WebPage + BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://reconx-sigma.vercel.app/terms.html#webpage",
+        "url": "https://reconx-sigma.vercel.app/terms.html",
+        "name": "ReconX Terms of Service",
+        "description": "Commercial licensing agreement and offline operations terms for ReconX software.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "ReconX",
+          "url": "https://reconx-sigma.vercel.app/",
+          "logo": "https://reconx-sigma.vercel.app/assets/icon.png"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://reconx-sigma.vercel.app/terms.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://reconx-sigma.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Terms of Service",
+            "item": "https://reconx-sigma.vercel.app/terms.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
     .legal-container {
-      max-width: 860px;
+      max-width: 880px;
       margin: 40px auto 80px auto;
       padding: 0 24px;
+    }
+    .breadcrumb-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .breadcrumb-bar a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb-bar a:hover {
+      color: var(--text-accent);
     }
     .legal-card {
       background: var(--bg-card);
@@ -50,7 +115,7 @@
       box-shadow: var(--shadow-lg);
     }
     .legal-title {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       margin-bottom: 8px;
       color: var(--text-primary);
     }
@@ -87,7 +152,7 @@
 
   <!-- Top Navigation -->
   <nav class="navbar">
-    <a href="index.html" class="nav-brand" style="text-decoration: none; color: inherit;">
+    <a href="/" class="nav-brand" style="text-decoration: none; color: inherit;">
       <img src="assets/icon.png" alt="ReconX Logo" width="32" height="32" style="border-radius: 8px;">
       ReconX
     </a>
@@ -95,47 +160,54 @@
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
         <i class="ph ph-moon"></i>
       </button>
-      <a href="index.html" class="btn btn-outline">← Back to Home</a>
+      <a href="/" class="btn btn-outline">← Back to Home</a>
     </div>
   </nav>
 
   <div class="legal-container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span style="color: var(--text-primary);">Terms of Service</span>
+    </nav>
+
     <div class="legal-card">
-      <h1 class="legal-title">Terms & Conditions</h1>
-      <p class="legal-subtitle">Last updated: August 20, 2026</p>
+      <h1 class="legal-title">Terms & Conditions of Service</h1>
+      <p class="legal-subtitle">Effective Date: August 27, 2026</p>
 
       <div class="legal-section">
-        <h2>1. Acceptance of Terms</h2>
-        <p>By downloading, installing, purchasing, or using ReconX ("the Software"), you agree to be bound by these Terms & Conditions. If you do not agree to these terms, please do not use the Software.</p>
+        <h2>1. Acceptance of Licensing Agreement</h2>
+        <p>By downloading, installing, purchasing, or using ReconX ("the Software"), you agree to be bound by these Terms & Conditions. If you do not agree to these terms, please discontinue using the Software.</p>
       </div>
 
       <div class="legal-section">
-        <h2>2. License Grant & Permitted Use</h2>
-        <p>Upon purchasing a subscription plan (1 Month, 2 Months, or 3 Months), ReconX grants you a non-exclusive, non-transferable, revocable license to use the Software on a single registered device (Machine ID) for the duration of the active subscription period.</p>
+        <h2>2. License Grant & Permitted Usage</h2>
+        <p>Upon purchasing a subscription plan (1 Month, 2 Months, or 3 Months), ReconX grants you a non-exclusive, non-transferable, revocable license to use the Software on a single registered Windows PC (Machine ID) for the duration of the active subscription period.</p>
         <ul>
-          <li><strong>Permitted Use:</strong> You may convert and reconcile bank statements for personal, professional, or commercial accounting purposes.</li>
-          <li><strong>Prohibitions:</strong> You may not reverse engineer, decompile, redistribute, resell, or crack the software or attempt to bypass the cryptographic licensing engine.</li>
+          <li><strong>Permitted Use:</strong> You may convert, decrypt, and reconcile bank statements for personal, client, audit, or commercial accounting operations.</li>
+          <li><strong>Prohibitions:</strong> You may not reverse engineer, decompile, redistribute, clone, resell, or crack the software or attempt to bypass the cryptographic licensing engine.</li>
         </ul>
       </div>
 
       <div class="legal-section">
-        <h2>3. Pricing & Payments</h2>
-        <p>All prices listed on our website are in Indian Rupees (INR). Payments are processed securely via our authorized payment partner (Razorpay). Subscriptions do not auto-debit; licenses expire at the end of the purchased duration unless manually renewed.</p>
+        <h2>3. Pricing & Transparent Billing</h2>
+        <p>All prices listed on our website are in Indian Rupees (INR). Payments are processed securely via our authorized payment partner (Razorpay). Subscriptions do not auto-debit; licenses simply expire at the end of the purchased duration unless manually renewed.</p>
       </div>
 
       <div class="legal-section">
-        <h2>4. Free Trial</h2>
-        <p>ReconX provides 5 free statement conversions to all new users out of the box. Users are encouraged to test statement compatibility with their bank formats during the free trial before purchasing a plan.</p>
+        <h2>4. Free Trial Included</h2>
+        <p>ReconX provides 5 free statement conversions to all new users upon initial installation. Users are encouraged to test statement compatibility with their specific bank formats during the free trial before purchasing a plan.</p>
       </div>
 
       <div class="legal-section">
-        <h2>5. Disclaimer of Warranties & Limitation of Liability</h2>
-        <p>ReconX provides automated mathematical reconciliation and formatting based on PDF input data. While we achieve 100% mathematical balance verification on supported formats, users are advised to verify sensitive final accounting records. ReconX shall not be liable for any indirect, incidental, or consequential damages arising from software usage.</p>
+        <h2>5. Disclaimer & Accuracy Verification</h2>
+        <p>ReconX provides automated mathematical reconciliation and formatting based on PDF statement tables. While we achieve 100% mathematical balance verification on supported formats, accounting professionals are advised to verify sensitive final audit records. ReconX shall not be liable for any indirect or consequential damages arising from software usage.</p>
       </div>
 
       <div class="legal-section">
-        <h2>6. Termination</h2>
-        <p>We reserve the right to revoke or suspend a license key if fraud, key sharing across unauthorized devices, or reverse engineering attempts are detected.</p>
+        <h2>6. License Termination</h2>
+        <p>We reserve the right to revoke or suspend a license key if fraudulent transactions, key sharing across unauthorized devices, or reverse engineering attempts are detected.</p>
       </div>
 
       <div class="legal-section">
@@ -149,13 +221,14 @@
   <footer class="footer">
     <div class="footer-content" style="flex-direction: column; gap: 16px; text-align: center;">
       <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: 0.9rem;">
-        <a href="terms.html" style="color: var(--text-accent); text-decoration: none; font-weight: bold;">Terms of Service</a>
-        <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
-        <a href="refund.html" style="color: var(--text-secondary); text-decoration: none;">Refund Policy</a>
-        <a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact Us</a>
+        <a href="/" style="color: var(--text-secondary); text-decoration: none;">Home</a>
+        <a href="/terms.html" style="color: var(--text-accent); text-decoration: none; font-weight: bold;">Terms of Service</a>
+        <a href="/privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a>
+        <a href="/refund.html" style="color: var(--text-secondary); text-decoration: none;">Refund Policy</a>
+        <a href="/contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact Us</a>
       </div>
       <div class="footer-copy">
-        &copy; 2026 ReconX Engine. All rights reserved.
+        &copy; 2026 ReconX Engine. All rights reserved. 100% Offline Bank Statement Converter.
       </div>
     </div>
   </footer>
