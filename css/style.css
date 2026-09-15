@@ -1055,15 +1055,238 @@ ul {
   color: var(--text-muted);
 }
 
+/* Swipe Hint Indicator for Mobile */
+.swipe-hint {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ff6b6b;
+  background: rgba(221, 2, 0, 0.12);
+  border: 1px solid rgba(221, 2, 0, 0.3);
+  border-radius: 20px;
+  padding: 5px 14px;
+  margin: 0.25rem auto 1rem auto;
+  width: max-content;
+  animation: swipePulse 2.2s infinite ease-in-out;
+}
+
+@keyframes swipePulse {
+  0%, 100% { transform: translateX(0); opacity: 0.9; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+
 @media (max-width: 768px) {
-  .trust-bar {
-    gap: 16px;
-    flex-direction: column;
-    align-items: flex-start;
+  .swipe-hint {
+    display: inline-flex;
   }
+
+  /* 1. Supported Banks: Smooth Horizontal Swipe Carousel */
+  .bank-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding: 0 20px !important;
+    gap: 14px !important;
+    padding: 10px 20px 24px 20px !important;
+    margin: 0.5rem -2rem 0 -2rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(221, 2, 0, 0.4) transparent !important;
+  }
+
+  .bank-grid::-webkit-scrollbar {
+    height: 5px;
+  }
+  .bank-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 0 20px;
+  }
+  .bank-grid::-webkit-scrollbar-thumb {
+    background: var(--gradient-button);
+    border-radius: 10px;
+  }
+
+  .bank-card {
+    flex: 0 0 82vw !important;
+    max-width: 310px !important;
+    scroll-snap-align: center !important;
+    padding: 20px !important;
+    border-radius: 18px !important;
+    margin: 0 !important;
+  }
+
+  /* 2. How It Works Steps: Horizontal Carousel */
+  .steps-container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding: 0 20px !important;
+    gap: 14px !important;
+    padding: 12px 20px 24px 20px !important;
+    margin: 0.5rem -2rem 0 -2rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(221, 2, 0, 0.4) transparent !important;
+  }
+  .steps-container::-webkit-scrollbar {
+    height: 5px;
+  }
+  .steps-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 0 20px;
+  }
+  .steps-container::-webkit-scrollbar-thumb {
+    background: var(--gradient-button);
+    border-radius: 10px;
+  }
+
+  .step {
+    flex: 0 0 80vw !important;
+    max-width: 280px !important;
+    scroll-snap-align: center !important;
+    margin-bottom: 0 !important;
+    padding: 24px 18px !important;
+    border-radius: 18px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-subtle) !important;
+  }
+  .step-connector {
+    display: none !important;
+  }
+
+  /* 3. Pricing Cards: Horizontal Carousel */
+  .pricing-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding: 0 20px !important;
+    gap: 14px !important;
+    padding: 16px 20px 28px 20px !important;
+    margin: 0.5rem -2rem 0 -2rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(221, 2, 0, 0.4) transparent !important;
+  }
+  .pricing-grid::-webkit-scrollbar {
+    height: 5px;
+  }
+  .pricing-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 0 20px;
+  }
+  .pricing-grid::-webkit-scrollbar-thumb {
+    background: var(--gradient-button);
+    border-radius: 10px;
+  }
+
+  .pricing-card {
+    flex: 0 0 82vw !important;
+    max-width: 300px !important;
+    scroll-snap-align: center !important;
+    padding: 24px 20px !important;
+    border-radius: 18px !important;
+  }
+  .popular {
+    transform: none !important;
+    border-color: var(--border-accent) !important;
+  }
+
+  /* 4. Testimonials: Horizontal Reviews Carousel */
+  .testimonials-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding: 0 20px !important;
+    gap: 14px !important;
+    padding: 12px 20px 24px 20px !important;
+    margin: 0.5rem -2rem 0 -2rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(221, 2, 0, 0.4) transparent !important;
+  }
+  .testimonials-grid::-webkit-scrollbar {
+    height: 5px;
+  }
+  .testimonials-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin: 0 20px;
+  }
+  .testimonials-grid::-webkit-scrollbar-thumb {
+    background: var(--gradient-button);
+    border-radius: 10px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 84vw !important;
+    max-width: 320px !important;
+    scroll-snap-align: center !important;
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+  }
+
+  /* 5. Trust Bar 2x2 Grid */
+  .trust-bar {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-subtle) !important;
+    margin: 0 auto 2rem auto !important;
+  }
+  .trust-item {
+    font-size: 0.82rem !important;
+    gap: 6px !important;
+  }
+  .trust-item i {
+    font-size: 1.15rem !important;
+  }
+
   .comparison-table th, .comparison-table td {
     padding: 12px 14px;
     font-size: 0.82rem;
+  }
+
+  /* 6. Section Titles & Subtitles */
+  .section {
+    padding: 3rem 1.25rem !important;
+  }
+  .section-title {
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .section-subtitle {
+    font-size: 0.92rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 2.25rem !important;
+    line-height: 1.2 !important;
+  }
+  .hero__subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .trust-bar {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
   }
 }
 
