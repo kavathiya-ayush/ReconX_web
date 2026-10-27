@@ -257,12 +257,22 @@
                 }
             };
 
-            if (orderId && orderId.length > 5) {
+            // Only attach order_id if it is a genuine Razorpay server-created order
+            const isGenuineRazorpayServerOrder = typeof orderId === 'string' && /^order_[a-zA-Z0-9]{14,24}$/.test(orderId);
+            if (isGenuineRazorpayServerOrder) {
                 options.order_id = orderId;
             }
 
-            rzpInstance = new Razorpay(options);
-            rzpInstance.open();
+            try {
+                rzpInstance = new Razorpay(options);
+                rzpInstance.on('payment.failed', function (resp) {
+                    console.warn('[Razorpay] Payment failed:', resp.error);
+                });
+                rzpInstance.open();
+            } catch (err) {
+                console.error('[Razorpay] Open error:', err);
+                if (btn) btn.innerText = "Pay with Razorpay (Retry)";
+            }
         }
 
         window.addEventListener('pagehide', () => {
