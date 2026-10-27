@@ -6,8 +6,8 @@
        crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReconX Pro Checkout | Secure License Activation & UPI</title>
-    <meta name="description" content="Secure UPI and Razorpay license checkout for ReconX 100% Offline Bank Statement Converter. Instant activation.">
+    <title id="pageTitle">ReconX Pro Checkout | Secure License Activation</title>
+    <meta name="description" content="Secure UPI and Razorpay license checkout for ReconX software. Instant hardware key activation.">
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#020617">
     
@@ -15,14 +15,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://reconx-sigma.vercel.app/pay.html">
     <meta property="og:title" content="ReconX Pro Checkout | Secure License Activation">
-    <meta property="og:description" content="Secure UPI and Razorpay license checkout for ReconX Bank Statement Converter.">
+    <meta property="og:description" content="Secure UPI and Razorpay license checkout for ReconX.">
     <meta property="og:image" content="https://reconx-sigma.vercel.app/assets/icon.png">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="ReconX Pro Checkout | Secure License Activation">
-    <meta name="twitter:description" content="Secure UPI and Razorpay license checkout for ReconX Bank Statement Converter.">
-    <meta name="twitter:image" content="https://reconx-sigma.vercel.app/assets/icon.png">
     
     <link rel="canonical" href="https://reconx-sigma.vercel.app/pay.html">
     
@@ -38,11 +32,16 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Razorpay Checkout Script -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.35); }
+            50% { box-shadow: 0 0 45px rgba(16, 185, 129, 0.65); }
+        }
+        .pulse-emerald { animation: pulseGlow 2.5s infinite; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
@@ -51,96 +50,146 @@
         <div class="absolute -top-24 -left-24 w-48 h-48 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
-        <!-- Lock Icon Header -->
-        <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-inner">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        <!-- Shield / Lock Icon Header -->
+        <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-inner">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
         </div>
 
-        <h1 class="text-2xl font-extrabold tracking-tight text-white mb-1">ReconX License Checkout</h1>
-        <p class="text-xs text-slate-400 mb-6">Device Auth Key: <span class="font-mono text-emerald-400 font-bold px-2 py-0.5 bg-emerald-500/10 rounded-md border border-emerald-500/20" id="displayMachineId">Loading...</span></p>
+        <h1 class="text-2xl font-black tracking-tight text-white mb-1" id="displayHeaderTitle">ReconX License Checkout</h1>
+        <div class="flex items-center justify-center gap-1.5 mb-5 flex-wrap">
+            <span class="text-xs text-slate-400">Device Auth Key:</span>
+            <span class="font-mono text-emerald-400 font-bold px-2 py-0.5 bg-emerald-500/10 rounded-md border border-emerald-500/20 text-xs" id="displayMachineId">Loading...</span>
+        </div>
 
         <!-- Order Summary Card -->
         <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 mb-6 text-left">
             <div class="flex justify-between items-center mb-2.5">
-                <span class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Product</span>
-                <span class="text-xs font-bold text-slate-200" id="displayPlan">Unlimited Conversion</span>
+                <span class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Product Edition</span>
+                <span class="text-xs font-bold text-slate-200" id="displayPlan">CA Practice Suite</span>
+            </div>
+            <div id="firmNameRow" class="hidden justify-between items-center mb-2.5">
+                <span class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Firm Name</span>
+                <span class="text-xs font-bold text-slate-200 truncate max-w-[190px]" id="displayFirmName">CA Firm</span>
             </div>
             <div class="flex justify-between items-center mb-3">
-                <span class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Validity</span>
-                <span class="text-xs font-bold text-emerald-400" id="displayDays">30 Days</span>
+                <span class="text-xs text-slate-400 uppercase font-semibold tracking-wider">Validity Period</span>
+                <span class="text-xs font-bold text-emerald-400" id="displayDays">365 Days (1 Year)</span>
             </div>
             <div class="flex justify-between items-center pt-3 border-t border-slate-700/70">
-                <span class="text-sm font-semibold text-slate-300">Total Amount</span>
-                <span class="text-2xl font-black text-white" id="displayAmount">₹349</span>
+                <div>
+                    <span class="text-sm font-semibold text-slate-300 block">Total Payable</span>
+                    <span class="text-[10px] text-slate-400" id="displayGstNote">Includes GST &bull; Instant Minting</span>
+                </div>
+                <span class="text-2xl font-black text-white" id="displayAmount">₹0</span>
             </div>
         </div>
 
-        <!-- Action Area -->
+        <!-- Action Area (Pre-Payment) -->
         <div id="paymentActionArea">
-            <button onclick="launchRazorpay()" id="payBtn" class="w-full bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-slate-950 font-bold py-4 px-6 rounded-2xl transition-all shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 text-base cursor-pointer">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                <span id="payBtnText">Pay Now (UPI, QR, Cards, NetBanking)</span>
+            <button onclick="launchRazorpay()" id="payBtn" class="w-full bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-slate-950 font-extrabold py-4 px-6 rounded-2xl transition-all shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 text-base cursor-pointer pulse-emerald">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span id="payBtnText">Pay with Razorpay (UPI, QR, Cards)</span>
             </button>
-            <p class="text-xs text-slate-500 mt-3">Clicking Pay Now will open the Razorpay secure gateway.</p>
+            <p class="text-xs text-slate-500 mt-3">Clicking will open the official Razorpay verified gateway.</p>
         </div>
 
-        <!-- Success Area -->
-        <div id="successArea" class="hidden flex-col items-center justify-center py-4 animate-fade-in">
-            <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mb-3 border border-emerald-500/40">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+        <!-- Success Area (Post-Payment) -->
+        <div id="successArea" class="hidden flex-col items-center justify-center py-3">
+            <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mb-3 border-2 border-emerald-400 shadow-xl shadow-emerald-500/30">
+                <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
             </div>
-            <h2 class="text-xl font-bold text-white mb-1">Payment Successful!</h2>
-            <p class="text-xs text-emerald-400 mb-2 font-medium">License has been activated for your device.</p>
-            <div class="bg-slate-800/60 border border-slate-700/60 rounded-xl p-3 text-xs text-slate-300 w-full mt-2">
-                You can now return to <strong>ReconX</strong> on your PC. It will unlock automatically!
+            <h2 class="text-xl font-black text-white mb-1">Payment Successful!</h2>
+            <p class="text-xs text-emerald-400 mb-4 font-semibold">License token cryptographically issued for this device.</p>
+            
+            <!-- Prominent Return to ReconX Software CTA -->
+            <button onclick="returnToSoftware()" id="returnBtn" class="w-full bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-slate-950 font-black py-4 px-6 rounded-2xl transition-all shadow-xl shadow-emerald-500/30 flex items-center justify-center gap-2.5 text-base cursor-pointer mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 9l3 3-3 3"></path>
+                </svg>
+                <span>Return to ReconX Software</span>
+            </button>
+            
+            <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-3 text-xs text-slate-300 w-full text-center">
+                Your desktop software will detect the payment and start your license clock automatically!
             </div>
         </div>
 
         <!-- Security Footer -->
         <div class="mt-8 pt-4 border-t border-slate-800/80 flex flex-col items-center gap-2 text-[11px] text-slate-500">
             <div class="flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                <span>256-Bit Banking Grade SSL Encryption</span>
+                <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>256-Bit Banking Grade SSL &bull; Razorpay Verified Merchant</span>
             </div>
-            <div>Official Razorpay Verified Merchant &bull; <a href="/refund.html" class="hover:text-slate-400 underline">Refund Policy</a> &bull; <a href="/terms.html" class="hover:text-slate-400 underline">Terms</a></div>
+            <div><a href="/refund.html" class="hover:text-slate-400 underline">Refund Policy</a> &bull; <a href="/terms.html" class="hover:text-slate-400 underline">Terms</a> &bull; <a href="/privacy.html" class="hover:text-slate-400 underline">Privacy</a></div>
         </div>
     </div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const orderId = urlParams.get('order_id') || '';
+        const orderId = (urlParams.get('order_id') || '').trim();
         const machineId = urlParams.get('machine_id') || 'UNKNOWN';
-        const days = parseInt(urlParams.get('days') || '30');
-        const amount = parseInt(urlParams.get('amount') || '349');
+        const days = parseInt(urlParams.get('days') || '365');
+        const amount = parseInt(urlParams.get('amount') || '3999');
         const rzpKey = urlParams.get('key') || 'rzp_live_TSmj2315sRmP4a';
+        const edition = urlParams.get('edition') || '';
+        const firmName = urlParams.get('firm_name') || '';
+        const email = urlParams.get('email') || '';
+        const product = urlParams.get('product') || (edition ? 'office' : 'converter');
+        const port = parseInt(urlParams.get('port') || '54322');
+
+        // Edition Label Map
+        const editionTitles = {
+            'solo': 'Solo CA Practice Edition',
+            'partner-50-50': '50:50 Partner Desks Edition',
+            'owner-article': 'Principal CA + Articleship Firm',
+            'full-firm': 'Full Chartered Firm Edition'
+        };
+
+        const isOfficeProduct = product === 'office' || Boolean(edition);
+
+        // Customize UI based on product
+        if (isOfficeProduct) {
+            document.getElementById('pageTitle').innerText = 'ReconX CA Office Management | Razorpay Checkout';
+            document.getElementById('displayHeaderTitle').innerText = 'ReconX CA Office Management';
+            const resolvedEditionTitle = editionTitles[edition] || 'CA Practice Management Suite';
+            document.getElementById('displayPlan').innerText = resolvedEditionTitle;
+            if (firmName) {
+                const firmRow = document.getElementById('firmNameRow');
+                firmRow.classList.remove('hidden');
+                firmRow.classList.add('flex');
+                document.getElementById('displayFirmName').innerText = firmName;
+            }
+        } else {
+            document.getElementById('displayPlan').innerText = days >= 60 ? 'Pro Multi-Month Plan' : '1 Month Pro Plan';
+        }
 
         document.getElementById('displayMachineId').innerText = machineId;
-        document.getElementById('displayDays').innerText = `${days} Days`;
-        document.getElementById('displayAmount').innerText = `₹${amount}`;
-        document.getElementById('displayPlan').innerText = days >= 60 ? 'Pro Multi-Month Plan' : '1 Month Pro Plan';
+        const formattedDays = days >= 365 
+            ? `${days} Days (${Math.round(days/365)} Year${Math.round(days/365) > 1 ? 's' : ''})` 
+            : `${days} Days (${Math.round(days/30)} Month${Math.round(days/30) > 1 ? 's' : ''})`;
+        document.getElementById('displayDays').innerText = formattedDays;
+        document.getElementById('displayAmount').innerText = `₹${amount.toLocaleString('en-IN')}`;
 
         let rzpInstance = null;
         let isPaymentCompleted = false;
+        let latestPaymentDetails = null;
 
         function notifyCancellation() {
-            if (isPaymentCompleted || !orderId) return;
+            if (isPaymentCompleted) return;
+            const payload = JSON.stringify({ order_id: orderId, machine_id: machineId, edition: edition });
             
-            const payload = JSON.stringify({ order_id: orderId, machine_id: machineId });
-            const blob = new Blob([payload], { type: 'application/json' });
-
-            // 1. sendBeacon directly to local desktop app
+            // Loopback notification to desktop app
             try {
-                navigator.sendBeacon('http://127.0.0.1:5000/api/cancel_payment_order', blob);
-            } catch(e) {}
-
-            // 2. sendBeacon to cloud backend
-            try {
-                navigator.sendBeacon('https://recon-x-admin.vercel.app/api/cancel_payment_order', blob);
-            } catch(e) {}
-
-            // Fallback fetch
-            try {
-                fetch('http://127.0.0.1:5000/api/cancel_payment_order', {
+                fetch(`http://127.0.0.1:${port}/api/cancel_payment`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: payload,
@@ -149,61 +198,108 @@
             } catch(e) {}
         }
 
+        function returnToSoftware() {
+            if (!latestPaymentDetails) return;
+            const pid = latestPaymentDetails.paymentId || '';
+            const oid = latestPaymentDetails.orderId || orderId || '';
+            
+            // 1. Primary Deep Link Protocol (triggers second-instance and brings app to foreground)
+            const deepLinkUrl = `reconx-office://payment-success?payment_id=${encodeURIComponent(pid)}&order_id=${encodeURIComponent(oid)}&machine_id=${encodeURIComponent(machineId)}&days=${days}&edition=${encodeURIComponent(edition)}&amount=${amount}`;
+            window.location.href = deepLinkUrl;
+
+            // 2. Secondary fallback protocol
+            setTimeout(() => {
+                window.location.href = `reconx://payment-success?payment_id=${encodeURIComponent(pid)}&machine_id=${encodeURIComponent(machineId)}&days=${days}&edition=${encodeURIComponent(edition)}`;
+            }, 300);
+        }
+
         function launchRazorpay() {
             const btn = document.getElementById('payBtnText');
-            if (btn) btn.innerText = "Opening Payment Gateway...";
+            if (btn) btn.innerText = "Opening Razorpay Gateway...";
+
+            const descriptionText = isOfficeProduct 
+                ? `${editionTitles[edition] || 'CA Suite'} - ${days} Days (${machineId})`
+                : `${days} Days License (${machineId})`;
 
             const options = {
                 key: rzpKey,
-                amount: amount * 100,
+                amount: amount * 100, // paise
                 currency: "INR",
-                name: "ReconX Software",
-                description: `${days} Days License (${machineId})`,
-                order_id: orderId,
+                name: isOfficeProduct ? "ReconX CA Office Management" : "ReconX Software",
+                description: descriptionText,
                 prefill: {
-                    contact: "",
-                    email: ""
+                    name: firmName || "",
+                    email: email || "",
+                    contact: ""
+                },
+                notes: {
+                    machine_id: machineId,
+                    days: String(days),
+                    edition: edition,
+                    product: product,
+                    firm_name: firmName
                 },
                 theme: {
-                    color: "#10b981"
+                    color: "#059669"
                 },
                 handler: async function (response) {
                     isPaymentCompleted = true;
+                    latestPaymentDetails = {
+                        paymentId: response.razorpay_payment_id,
+                        orderId: response.razorpay_order_id || orderId,
+                        signature: response.razorpay_signature || ''
+                    };
+
                     document.getElementById('paymentActionArea').classList.add('hidden');
                     document.getElementById('successArea').classList.remove('hidden');
                     document.getElementById('successArea').classList.add('flex');
 
+                    // Layer 1: Instant Local Loopback POST to Desktop App
+                    const loopbackPayload = JSON.stringify({
+                        paymentId: response.razorpay_payment_id,
+                        orderId: response.razorpay_order_id || orderId,
+                        signature: response.razorpay_signature || '',
+                        machineId: machineId,
+                        days: days,
+                        edition: edition,
+                        amount: amount
+                    });
+
                     try {
-                        await fetch('https://recon-x-admin.vercel.app/api/verify_payment', {
+                        await fetch(`http://127.0.0.1:${port}/api/payment_success`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                razorpay_order_id: response.razorpay_order_id,
-                                razorpay_payment_id: response.razorpay_payment_id,
-                                razorpay_signature: response.razorpay_signature,
-                                machine_id: machineId,
-                                days: days
-                            })
+                            body: loopbackPayload
                         });
                     } catch (e) {
-                        console.error("Verification callback notice:", e);
+                        console.warn("Loopback trigger notice:", e);
                     }
+
+                    // Layer 2: Automatic deep link trigger
+                    setTimeout(() => {
+                        returnToSoftware();
+                    }, 500);
                 },
                 modal: {
                     ondismiss: function() {
                         if (!isPaymentCompleted) {
-                            if (btn) btn.innerText = "Pay Now (UPI, QR, Cards, NetBanking)";
+                            if (btn) btn.innerText = "Pay with Razorpay (UPI, QR, Cards)";
                             notifyCancellation();
                         }
                     }
                 }
             };
 
+            // Only attach order_id if present and non-empty
+            if (orderId && orderId.length > 5) {
+                options.order_id = orderId;
+            }
+
             rzpInstance = new Razorpay(options);
             rzpInstance.open();
         }
 
-        // Notify desktop app if user closes tab or navigates away
+        // Notify desktop app if user closes tab
         window.addEventListener('pagehide', () => {
             if (!isPaymentCompleted) notifyCancellation();
         });
@@ -211,7 +307,7 @@
             if (!isPaymentCompleted) notifyCancellation();
         });
 
-        // Auto launch Razorpay after 400ms
+        // Auto launch Razorpay after 400ms for smooth user experience
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(launchRazorpay, 400);
         });
